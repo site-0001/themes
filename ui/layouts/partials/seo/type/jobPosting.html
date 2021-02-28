@@ -1,0 +1,60 @@
+{{ $datePosted := (.PublishDate.Format "2006-01-02T15:04:05") }}
+{{ $employmentType := .Params.employmentType | default "" }}
+
+{{ $description := $.Site.Params.description }}
+{{ with .Summary }}{{ $description = . }}{{ end }}
+{{ with .Description }}{{ $description = . }}{{ end }}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "{{ .Title }}",
+    "description": "{{ $description | plainify }}",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "{{ $.Site.Params.organization.name }}",
+      "value": "{{ .File.UniqueID }}"
+    },
+    "datePosted": "{{ $datePosted }}",
+    "validThrough": "{{ .expiryDate }}",
+    "employmentType": [
+      "{{ delimit $employmentType ", " }}"
+    ],
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "{{ $.Site.Params.organization.name }}",
+      "sameAs": "{{ $.Site.Params.organization.url }}",
+      "logo": "{{ $.Site.Params.organization.logo | absURL }}"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ $.Site.Params.organization.address.street }}",
+        "addressLocality": "{{ $.Site.Params.organization.address.locality }}",
+        "addressRegion": "{{ $.Site.Params.organization.address.region }}",
+        "postalCode": "{{ $.Site.Params.organization.address.postalCode }}",
+        "addressCountry": "{{ $.Site.Params.organization.address.country }}"
+      }
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "{{ .Params.job.salary.currency }}",
+      "value": {
+        "@type": "QuantitativeValue",
+        "value": "{{ .Params.job.salary.value }}",
+        "minValue": "{{ .Params.job.salary.valueMin }}",
+        "maxValue": "{{ .Params.job.salary.valueMax }}",
+        "unitText": "{{ .Params.job.salary.valueUnit }}"
+      }
+    },
+    "educationRequirements": "",
+    "experienceRequirements": "",
+    "industry": "",
+    "qualifications": "",
+    "responsibilities": "",
+    "skills": "",
+    "workHours": ""
+  }
+</script>

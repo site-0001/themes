@@ -1,0 +1,13 @@
+<!-- languages -->
+<li class="nav-item dropdown">
+  <a title='{{ i18n "languages" }}' class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-globe fa-fw me-1"></i>
+    <span>{{ .Language.LanguageName }}</span>
+  </a>
+  <div class="dropdown-menu dropdown-menu-end shadow">
+    {{ range $.Site.Home.AllTranslations }}
+    <a class="dropdown-item" href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}">{{ .Language.LanguageName }}</a>
+    {{ end }}
+  </div>
+</li>
+<!-- / languages -->

@@ -1,0 +1,61 @@
+{{ $x := .context | default "" }}
+
+<div class="node-meta">
+  <article>
+    <h4>{{ i18n "meta" }}</h4>
+    <div class="article-body">
+      {{ with $x.File }}
+      <ul class="row list-unstyled mb-0">
+        <li class="col-4">
+          <span>{{ i18n "fileID" }}</span>
+        </li>
+        <li class="col">
+          <span><code>{{ .UniqueID }}</code></span>
+        </li>
+      </ul>
+      {{ end }}
+      <ul class="row list-unstyled mb-0">
+        <li class="col-4">
+          <span>{{ i18n "uuid" }}</span>
+        </li>
+        <li class="col">
+          <span><code>{{ $x.Params.uuid }}</code></span>
+        </li>
+      </ul>
+      {{ with $x.File }}
+      <ul class="row list-unstyled mb-0">
+        <li class="col-4">
+          <span>{{ i18n "sysPath" }}</span>
+        </li>
+        <li class="col">
+          <span><code>{{ $x.Path }}</code></span>
+        </li>
+      </ul>
+      {{ end }}
+      <ul class="row list-unstyled mb-0">
+        <li class="col-4">
+          <span>{{ i18n "type" }}</span>
+        </li>
+        <li class="col">
+          <span><code>{{ $x.Type }}</code></span>
+        </li>
+      </ul>
+      <ul class="row list-unstyled mb-0">
+        <li class="col-4">
+          <span>{{ i18n "wordCount" }}</span>
+        </li>
+        <li class="col">
+          <span><code>{{ $x.WordCount }}</code></span>
+        </li>
+      </ul>
+      <ul class="row list-unstyled mb-0">
+        <li class="col-4">
+          <span>{{ i18n "readingTime" }} ({{ i18n "minutes" }})</span>
+        </li>
+        <li class="col">
+          <span><code>{{ $x.ReadingTime }}</code></span>
+        </li>
+      </ul>
+    </div>
+  </article>
+</div>

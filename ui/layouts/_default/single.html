@@ -1,0 +1,14 @@
+{{ define "main" }}
+
+<div class="section py-5">
+  <div class="container">
+    {{ partial "breadcrumb" . }}
+
+    <article>
+      <h1 class="h2 text-center">{{ .Title }}</h1>
+      {{ partial "module/node/tabs" (dict "context" .) }}
+    </article>
+  </div>
+</div>
+
+{{ end }}

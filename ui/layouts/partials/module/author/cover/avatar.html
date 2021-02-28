@@ -1,0 +1,8 @@
+{{ $x := .context | default "" }}
+
+{{ $size := "128" }}{{ $hash := (md5 .File.UniqueID) }}
+{{ with $x.Params.author.contacts.email }}{{ $hash = (md5 .) }}{{ end }}
+
+<a href="{{ $x.Page.RelPermalink }}" class="d-inline-block bg-white text-decoration-none border rounded p-2">
+  <img src='https://gravatar.com/avatar/{{ $hash }}?s={{ $size }}&amp;d=identicon' alt=""/>
+</a>

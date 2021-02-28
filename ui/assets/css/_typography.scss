@@ -1,0 +1,43 @@
+@mixin fontSerif() {
+  font-family: 'PT Serif', 'Georgia', 'Times', serif;
+}
+
+@mixin fontMono() {
+  font-family: 'Fira Code', monospace;
+}
+
+$elements: 'ul', 'ol', 'table', 'p', 'blockquote';
+$shortcodes: 'diagram', 'quote', 'tags', 'categories', 'progress', 'alert', 'spoiler > div';
+
+.article {
+  &-body {
+    @each $element in $elements {
+      #{$elements} {
+        @include fontSerif();
+      }
+    }
+
+    @each $shortcode in $shortcodes {
+      .shortcode-#{$shortcode} {
+        @include fontSerif();
+      }
+    }
+
+    blockquote {
+      border-left: .5rem solid #f8f9fa;
+      padding-left: .5rem;
+    }
+
+    pre {
+      max-height: 40rem;
+
+      > code {
+        //font-size: 1rem;
+      }
+    }
+
+    kbd {
+      @include fontMono();
+    }
+  }
+}

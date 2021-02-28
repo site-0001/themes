@@ -1,0 +1,103 @@
+{{ if .IsNamedParams }}
+
+{{ $wallet := ((.Get "wallet") | default "") }}
+{{ $paypal := ((.Get "paypal") | default "") }}
+{{ $patreon := ((.Get "patreon") | default "") }}
+{{ $liberapay := ((.Get "liberapay") | default "") }}
+
+<div class="shortcode shortcode-form shortcode-{{ .Name }}">
+  <form method="post" action="https://money.yandex.ru/quickpay/confirm.xml">
+    <input type="hidden" name="receiver" value="{{ $wallet }}"/>
+    <input type="hidden" name="formcomment" value="Donation Form"/>
+    <input type="hidden" name="short-dest" value="Donation Form"/>
+    <input type="hidden" name="quickpay-form" value="donate"/>
+    <div class="row">
+      <div class="col-lg">
+        <div class="form-row">
+          <div class="form-group col-lg">
+            <input class="form-control" type="number" name="sum" value="100" min="1">
+            <small class="form-text text-muted">Укажите сумму.</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-lg">
+            <select class="custom-select" name="paymentType">
+              <option value="AC">Банковская карта</option>
+              <option value="PC">Яндекс.Деньги</option>
+              <option value="MC">Мобильный телефон</option>
+            </select>
+            <small class="form-text text-muted">Выберите способ перевода.</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-lg">
+            <textarea class="form-control" name="comment" rows="2" maxlength="200" placeholder="Введите комментарий (если имеется)..."></textarea>
+            <small class="form-text text-muted">Введите сопроводительный комментарий (не более 200 символов).</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg">
+        <div class="form-row">
+          <div class="form-group col-lg">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="need-fio" id="ya-need-fio">
+              <label class="custom-control-label" for="ya-need-fio">ФИО</label>
+              <small class="form-text text-muted">Отметьте, если хотите указать ФИО отправителя.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-lg">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="need-email" id="ya-need-email">
+              <label class="custom-control-label" for="ya-need-email">E-mail</label>
+              <small class="form-text text-muted">Отметьте, если хотите указать электронную почту отправителя.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-lg">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="need-phone" id="ya-need-phone">
+              <label class="custom-control-label" for="ya-need-phone">Телефон</label>
+              <small class="form-text text-muted">Отметьте, если хотите указать телефон отправителя.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-lg">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="need-address" id="ya-need-address">
+              <label class="custom-control-label" for="ya-need-address">Адрес</label>
+              <small class="form-text text-muted">Отметьте, если хотите указать адрес отправителя.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-lg">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <button type="submit" class="btn btn-primary is-label">
+                  <span><span><i class="fas fa-donate fa-fw"></i></span><span>{{ i18n "submit" }}</span></span>
+                </button>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-secondary" href="{{ $paypal }}" target="_blank" rel="noopener nofollow"><i class="fab fa-paypal fa-fw"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-secondary" href="{{ $patreon }}" target="_blank" rel="noopener nofollow"><i class="fab fa-patreon fa-fw"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-secondary" href="{{ $liberapay }}" target="_blank" rel="noopener nofollow"><i class="fas fa-hand-holding-usd fa-fw"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{{ else }}
+{{ partial "alert/no-named-params" . }}
+{{ end }}

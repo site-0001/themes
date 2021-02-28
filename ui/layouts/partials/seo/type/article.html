@@ -1,0 +1,49 @@
+{{ $date := (.Date.Format "2006-01-02T15:04:05Z07:00") | default "" }}
+{{ $datePublished := (.PublishDate.Format "2006-01-02T15:04:05Z07:00") | default $date }}
+{{ $dateCreated := (.PublishDate.Format "2006-01-02T15:04:05Z07:00") | default $date }}
+{{ $dateModified := (.Lastmod.Format "2006-01-02T15:04:05Z07:00") | default $date }}
+
+{{ $image := .Params.images | default "" }}
+{{ if $image }}{{ $image = index (.Params.images) 0 }}{{ end }}
+
+{{ $keywords := .Params.tags | default "" }}
+
+{{ $description := $.Site.Params.description }}
+{{ with .Summary }}{{ $description = . }}{{ end }}
+{{ with .Description }}{{ $description = . }}{{ end }}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ .Permalink }}"
+    },
+    "headline": "{{ .Title | truncate 110 }}",
+    "description": "{{ $description | plainify }}",
+    "image": "{{ $image }}",
+    "author": [
+      {{ range $i, $e := (.GetTerms "authors") }}{{ if $i }},{{ end }}{"@type": "Person","name": "{{ $e.LinkTitle }}"}{{ end }}
+    ],
+    "inLanguage": "{{ .Lang }}",
+    "wordCount": "{{ .WordCount }}",
+    "datePublished": "{{ $datePublished }}",
+    "dateCreated": "{{ $dateCreated }}",
+    "dateModified": "{{ $dateModified  }}",
+    "keywords": [
+      "{{ delimit $keywords ", " }}"
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ $.Site.Params.organization.name }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ $.Site.Params.organization.logo.url | absURL }}",
+        "height": "{{ $.Site.Params.organization.logo.height }}",
+        "width": "{{ $.Site.Params.organization.logo.width }}"
+      }
+    },
+    "articleBody": "{{ .Content | plainify }}"
+  }
+</script>

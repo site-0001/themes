@@ -1,0 +1,85 @@
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+
+{{ $description := $.Site.Params.description }}
+{{ with .Summary }}{{ $description = . }}{{ end }}
+{{ with .Description }}{{ $description = . }}{{ end }}
+
+<title>{{ if (ne .Title $.Site.Title) }}{{ .Title }} | {{ end }}{{ $.Site.Title }}</title>
+<meta name="title" content="{{ if (ne .Title $.Site.Title) }}{{ .Title }} | {{ end }}{{ $.Site.Title }}"/>
+<meta name="description" content="{{ $description | plainify | chomp }}"/>
+
+<!-- dns prefetch -->
+{{ $dns_prefetch := $.Site.Data.theme.dns_prefetch }}
+{{ range $dns_prefetch }}
+<link rel="dns-prefetch" href="{{ . }}"/>
+{{ end }}
+<!-- / dns prefetch -->
+
+<!-- pre-connect -->
+{{ $pre_connect := $.Site.Data.theme.pre_connect }}
+{{ range $pre_connect }}
+<link rel="preconnect" href="{{ . }}" crossorigin/>
+{{ end }}
+<!-- / pre-connect -->
+
+<!-- fonts -->
+{{ $fonts := $.Site.Data.theme.fonts }}
+{{ range $fonts }}
+<link rel="preload" href="{{ . }}" as="style"/>
+<link rel="stylesheet" href="{{ . }}"/>
+{{ end }}
+<!-- / fonts -->
+
+<!-- styles -->
+{{ $styles := $.Site.Data.theme.styles }}
+{{ range $styles }}
+<link rel="stylesheet" href="{{ . }}"/>
+{{ end }}
+
+{{ $style := resources.Get "css/theme.scss" | toCSS | minify | fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}"/>
+<!-- / styles -->
+
+<link rel="icon" type="image/svg+xml" sizes="any" href='{{ "img/favicon.svg" | absURL }}'/>
+<link rel="icon" type="image/png" sizes="16x16" href='{{ "img/favicon-16x16.png" | absURL }}'/>
+<link rel="icon" type="image/png" sizes="32x32" href='{{ "img/favicon-32x32.png" | absURL }}'/>
+<link rel="icon" type="image/png" sizes="64x64" href='{{ "img/favicon-64x64.png" | absURL }}'/>
+<link rel="icon" type="image/png" sizes="128x128" href='{{ "img/favicon-128x128.png" | absURL }}'/>
+<link rel="icon" type="image/png" sizes="192x192" href='{{ "img/favicon-192x192.png" | absURL }}'/>
+<link rel="apple-touch-icon" sizes="180x180" href='{{ "img/apple-touch-icon.png" | absURL }}'/>
+<meta name="application-name" content="{{ $.Site.Title }}"/>
+
+<!-- canonical -->
+<link rel="canonical" href="{{ .Permalink }}"/>
+<!-- / canonical -->
+
+<!-- languages -->
+{{ if .IsTranslated }}
+
+{{ range .Translations }}
+<link rel="alternate" href="{{ .Permalink }}" hreflang="{{ .Lang }}"/>
+{{ end }}
+
+{{ else }}
+
+{{ range .Site.Languages }}
+{{ if (ne $.Site.Language.Lang .Lang) }}
+<link rel="alternate" href="{{ .Lang | absURL }}" hreflang="{{ .Lang }}"/>
+{{ end }}
+{{ end }}
+
+{{ end }}
+<!-- / languages -->
+
+<!-- output formats -->
+{{ range .AlternativeOutputFormats }}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title }}"/>
+{{ end }}
+<!-- / output formats -->
+
+{{ template "_internal/twitter_cards.html" . }}
+{{ template "_internal/opengraph.html" . }}
+
+{{ partial "seo/dc" . }}
+{{ partial "seo/schema" . }}

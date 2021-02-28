@@ -1,0 +1,14 @@
+{{ $title := ((.Get "title") | default "Spoiler") }}
+{{ $type := ((.Get "type") | default "primary") }}
+{{ $id := (delimit (shuffle (seq 1 32)) "" | md5) }}
+
+<div class="shortcode shortcode-{{ .Name }} mb-3">
+  <button type="button" class="btn btn-{{ $type }} is-label" data-toggle="collapse" data-target="#spoiler-{{ $id }}" aria-expanded="false" aria-controls="spoiler-{{ $id }}">
+    <span><span><i class="fas fa-eye fa-fw"></i></span><span>{{ $title }}</span></span>
+  </button>
+  <div class="collapse" id="spoiler-{{ $id }}">
+    <div class="card card-body">
+      {{ with .Inner }}{{ . | $.Page.RenderString (dict "display" "block") }}{{ end }}
+    </div>
+  </div>
+</div>

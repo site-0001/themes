@@ -1,0 +1,196 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# General
+# ----------------------------------------------------------------------------------------------------------------------
+
+[languages]
+other = "Языки"
+
+[search]
+other = "Поиск"
+
+[searchGoogle]
+other = "Поиск Google"
+
+[searchYandex]
+other = "Поиск Яндекс"
+
+[searchBing]
+other = "Поиск Bing"
+
+[meta]
+other = "Meta"
+
+[categories]
+other = "Категории"
+
+[tags]
+other = "Теги"
+
+[type]
+other = "Тип"
+
+[wordCount]
+other = "Количество слов"
+
+[readingTime]
+other = "Время чтения"
+
+[minutes]
+other = "мин."
+
+[article]
+other = "Статья"
+
+[images]
+other = "Изображения"
+
+[audio]
+other = "Аудио"
+
+[video]
+other = "Видео"
+
+[storage]
+other = "Хранилище"
+
+[comments]
+other = "Комментарии"
+
+[info]
+other = "Информация"
+
+[site]
+other = "Сайт"
+
+[email]
+other = "Email"
+
+[contacts]
+other = "Контакты"
+
+[seeAlso]
+other = "Смотрите также"
+
+[previous]
+other = "Назад"
+
+[next]
+other = "Вперёд"
+
+[links]
+other = "Ссылки"
+
+[readMore]
+other = "Подробнее"
+
+[close]
+other = "Закрыть"
+
+[about]
+other = "О проекте"
+
+[share]
+other = "Поделиться"
+
+[fileID]
+other = "ID файла"
+
+[uuid]
+other = "UUID"
+
+[sysPath]
+other = "Системный путь"
+
+[sources]
+other = "Источники"
+
+[articles]
+other = "Статьи"
+
+[name]
+other = "Имя"
+
+[location]
+other = "Местонахождение"
+
+[phone]
+other = "Телефон"
+
+[message]
+other = "Сообщение"
+
+[noData]
+other = "Нет данных..."
+
+[submit]
+other = "Отправить"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Social
+# ----------------------------------------------------------------------------------------------------------------------
+
+[facebook]
+other = "Facebook"
+
+[twitter]
+other = "Twitter"
+
+[vk]
+other = "ВКонтакте"
+
+[youtube]
+other = "YouTube"
+
+[instagram]
+other = "Instagram"
+
+[github]
+other = "GitHub"
+
+[gitlab]
+other = "GitLab"
+
+[bitbucket]
+other = "BitBucket"
+
+[patreon]
+other = "Patreon"
+
+[reddit]
+other = "Reddit"
+
+[linkedIn]
+other = "LinkedIn"
+
+[hackerNews]
+other = "Hacker News"
+
+[ok]
+other = "Одноклассники"
+
+[skype]
+other = "Skype"
+
+[telegram]
+other = "Telegram"
+
+[tumblr]
+other = "Tumblr"
+
+[liveJournal]
+other = "LiveJournal"
+
+[pocket]
+other = "Pocket"
+
+[digg]
+other = "Digg"
+
+[wordpress]
+other = "WordPress"
+
+[blogger]
+other = "Blogger"
+
+[pinterest]
+other = "Pinterest"

@@ -1,0 +1,19 @@
+{{ $x := .context | default "" }}
+
+{{ if $x.Params.sources }}
+<div class="text-muted font-italic border-top mt-5 pt-3">
+  <p>{{ i18n "sources" }}:</p>
+  <ul>
+    {{ range $x.Params.sources }}
+    <li>
+      {{ if (hasPrefix . "http") }}
+      {{ $url := urls.Parse . }}
+      <a class="text-reset" href="{{ . }}" target="_blank" rel="noopener nofollow">{{ $url.Host }}</a>
+      {{ else }}
+      {{ . }}
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

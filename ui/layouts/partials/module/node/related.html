@@ -1,0 +1,21 @@
+{{ $x := .context | default "" }}
+
+<div class="node-similar">
+  <article>
+    <h4>{{ i18n "seeAlso" }}</h4>
+    <div class="article-body">
+      {{ $related := ($x.Site.RegularPages.Related $x) | first 5 }}
+      {{ with $related }}
+      <ul>
+        {{ range . }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+      {{ else }}
+      {{ partial "alert/no-data" . }}
+      {{ end }}
+    </div>
+  </article>
+</div>

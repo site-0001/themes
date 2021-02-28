@@ -1,0 +1,30 @@
+{
+  "name": "{{ $.Site.Title }}",
+  "description": "{{ $.Site.Params.description }}",
+  "short_name": "{{ $.Site.Title }}",
+  "icons": [
+    {
+      "src": "{{ "img/favicon-192x192.png" | absURL }}",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{{ "img/favicon-256x256.png" | absURL }}",
+      "type": "image/png",
+      "sizes": "256x256",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{{ "img/favicon-512x512.png" | absURL }}",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "{{ $.Site.LanguageCode }}",
+  "dir": "ltr",
+  "display": "minimal-ui",
+  "background_color": "{{ $.Site.Data.theme.color_bg }}",
+  "theme_color": "{{ $.Site.Data.theme.color }}"
+}

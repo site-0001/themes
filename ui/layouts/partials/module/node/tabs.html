@@ -1,0 +1,119 @@
+{{ $x := .context | default "" }}
+{{ $content := .content | default $x.Content }}
+{{ $images := 0 }}{{ $audio := 0 }}{{ $video := 0 }}{{ $storage := 0 }}
+
+{{ with ($x.Page.Resources.Match "storage/*") }}
+{{ $storage = 1 }}
+
+{{ range . }}
+{{ if (in .MediaType.MainType "image") }}{{ $images = 1 }}{{ end }}
+{{ if (in .MediaType.MainType "audio") }}{{ $audio = 1 }}{{ end }}
+{{ if (in .MediaType.MainType "video") }}{{ $video = 1 }}{{ end }}
+{{ end }}
+
+{{ end }}
+
+<ul class="nav nav-tabs mt-4 mb-3" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "article" }}' class="nav-link active" id="node-home-tab" data-bs-toggle="tab" href="#node-home" role="tab" aria-controls="node-home" aria-selected="true">
+      <i class="fas fa-home fa-fw"></i>
+    </a>
+  </li>
+  {{ if $images }}
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "images" }}' class="nav-link" id="node-images-tab" data-bs-toggle="tab" href="#node-images" role="tab" aria-controls="node-images" aria-selected="false">
+      <i class="fas fa-images fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  {{ if $audio }}
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "audio" }}' class="nav-link" id="node-audio-tab" data-bs-toggle="tab" href="#node-audio" role="tab" aria-controls="node-audio" aria-selected="false">
+      <i class="fas fa-volume-up fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  {{ if $video }}
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "video" }}' class="nav-link" id="node-video-tab" data-bs-toggle="tab" href="#node-video" role="tab" aria-controls="node-video" aria-selected="false">
+      <i class="fas fa-video fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  {{ if $storage }}
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "storage" }}' class="nav-link" id="node-storage-tab" data-bs-toggle="tab" href="#node-storage" role="tab" aria-controls="node-storage" aria-selected="false">
+      <i class="fas fa-hdd fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  {{ if $x.Site.DisqusShortname }}
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "comments" }}' class="nav-link" id="node-comments-tab" data-bs-toggle="tab" href="#node-comments" role="tab" aria-controls="node-comments" aria-selected="false">
+      <i class="fas fa-comments fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  {{ if (in $x.Type "post") }}
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "info" }}' class="nav-link" id="node-info-tab" data-bs-toggle="tab" href="#node-info" role="tab" aria-controls="node-info" aria-selected="false">
+      <i class="fas fa-info fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  {{ if (in $x.Type "authors") }}
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "articles" }}' class="nav-link" id="node-articles-tab" data-bs-toggle="tab" href="#node-articles" role="tab" aria-controls="node-articles" aria-selected="false">
+      <i class="fas fa-book fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  <li class="nav-item dropdown ms-auto">
+    <a title='{{ i18n "share" }}' class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-share fa-fw"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end dropdown-menu-share shadow">
+      {{ partial "module/node/tabs/share" (dict "context" $x) }}
+    </div>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane show active" id="node-home" role="tabpanel" aria-labelledby="node-home-tab">
+    {{ partial "module/node/tabs/home" (dict "context" $x "content" $content) }}
+  </div>
+  {{ if $images }}
+  <div class="tab-pane" id="node-images" role="tabpanel" aria-labelledby="node-images-tab">
+    {{ partial "module/node/tabs/images" (dict "context" $x) }}
+  </div>
+  {{ end }}
+  {{ if $audio }}
+  <div class="tab-pane" id="node-audio" role="tabpanel" aria-labelledby="node-video-tab">
+    {{ partial "module/node/tabs/audio" (dict "context" $x) }}
+  </div>
+  {{ end }}
+  {{ if $video }}
+  <div class="tab-pane" id="node-video" role="tabpanel" aria-labelledby="node-video-tab">
+    {{ partial "module/node/tabs/video" (dict "context" $x) }}
+  </div>
+  {{ end }}
+  {{ if $storage }}
+  <div class="tab-pane" id="node-storage" role="tabpanel" aria-labelledby="node-storage-tab">
+    {{ partial "module/node/tabs/storage" (dict "context" $x) }}
+  </div>
+  {{ end }}
+  {{ if $x.Site.DisqusShortname }}
+  <div class="tab-pane" id="node-comments" role="tabpanel" aria-labelledby="node-comments-tab">
+    {{ partial "module/node/tabs/comments" (dict "context" $x) }}
+  </div>
+  {{ end }}
+  {{ if (in $x.Type "post") }}
+  <div class="tab-pane" id="node-info" role="tabpanel" aria-labelledby="node-info-tab">
+    {{ partial "module/node/tabs/info" (dict "context" $x) }}
+  </div>
+  {{ end }}
+  {{ if (in $x.Type "authors") }}
+  <div class="tab-pane" id="node-articles" role="tabpanel" aria-labelledby="node-articles-tab">
+    {{ partial "module/author/articles" (dict "context" $x) }}
+  </div>
+  {{ end }}
+</div>

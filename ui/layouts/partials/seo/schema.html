@@ -1,0 +1,7 @@
+{{ partial "seo/type/webSite.html" . }}
+{{ partial "seo/type/organization.html" . }}
+{{ partial "seo/type/navigation.html" . }}
+{{ if .IsPage }}
+{{ partial "seo/type/breadcrumbList.html" . }}
+{{ partial "seo/type/article.html" . }}
+{{ end }}

@@ -1,0 +1,3 @@
+{{ $x := .context | default "" }}
+
+{{ template "_internal/disqus.html" $x }}

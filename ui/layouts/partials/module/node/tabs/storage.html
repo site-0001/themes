@@ -1,0 +1,34 @@
+{{ $x := .context | default "" }}
+{{ with ($x.Page.Resources.Match "storage/*") }}
+
+{{ $icon := "file" }}
+<div class="article-body">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    {{ range . }}
+    {{ if (in .MediaType.MainType "application") }}{{ $icon = "cog" }}{{ end }}
+    {{ if (in .MediaType.MainType "image") }}{{ $icon = "file-image" }}{{ end }}
+    {{ if (in .MediaType.MainType "audio") }}{{ $icon = "file-audio" }}{{ end }}
+    {{ if (in .MediaType.MainType "video") }}{{ $icon = "file-video" }}{{ end }}
+    {{ if (in .MediaType.MainType "text") }}{{ $icon = "file-alt" }}{{ end }}
+    {{ if (in .MediaType.SubType "pdf") }}{{ $icon = "file-pdf" }}{{ end }}
+    {{ if (in .MediaType.SubType "gzip") }}{{ $icon = "file-archive" }}{{ end }}
+    <div class="col mb-2">
+      <div class="media">
+        <div class="me-1 text-muted">
+          <i class="fas fa-{{ $icon }} fa-fw fa-3x"></i>
+        </div>
+        <div class="media-body">
+          <p class="mb-0 text-break">
+            <a href="{{ .RelPermalink }}">{{ .Name | path.Base }}</a>
+          </p>
+          <p class="text-muted small">
+            {{ .MediaType }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}

@@ -1,0 +1,139 @@
+a {
+  &.btn {
+    &[href*='twitter.com'] {
+      $color: #1da1f2;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='facebook.com'] {
+      $color: #3b5998;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='linkedin.com'] {
+      $color: #0077b5;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='reddit.com'] {
+      $color: #ff4500;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='vk.com'] {
+      $color: #45668e;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='t.me'] {
+      $color: #0088cc;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='pinterest.com'] {
+      $color: #bd081c;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='mailto'] {
+    }
+
+    &[href*='getpocket.com'] {
+      $color: #ef4056;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='news.ycombinator.com'] {
+      $color: #ff4000;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='livejournal.com'] {
+      $color: #004359;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='ok.ru'] {
+      $color: #ed812b;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='blogger.com'] {
+      $color: #f57d00;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='digg.com'] {
+      $color: #005be2;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='skype.com'] {
+      $color: #00aff0;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='tumblr.com'] {
+      $color: #35465c;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='wordpress.com'] {
+      $color: #0087be;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='patreon.com'] {
+      $color: #f96854;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='github.com'] {
+      $color: #333;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='gitlab.com'] {
+      $color: #fc6d26;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+  }
+}

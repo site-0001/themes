@@ -1,0 +1,137 @@
+{{ $x := .context | default "" }}
+
+{{ $url := $x.Permalink }}
+{{ $title := $x.Title | htmlEscape }}
+{{ $summary := $x.Summary | htmlEscape }}
+
+{{ $tags := $x.Params.tags | default "" }}
+{{ $tags = delimit $tags "," }}
+
+<div class="px-3 pt-2">
+  <ul class="list-inline text-center">
+    <li class="list-inline-item mx-1 my-1">
+      {{ $twitter := (i18n "twitter") }}
+      <a title='{{ $twitter }}' class="btn ext-popup" href="https://twitter.com/intent/tweet?url={{ $url }}&amp;text={{ $title }}&amp;hashtags={{ $tags }}" rel="noopener nofollow">
+        <i class="fab fa-twitter fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $facebook := (i18n "facebook") }}
+      <a title='{{ $facebook }}' class="btn ext-popup" href="https://facebook.com/sharer/sharer.php?u={{ $url }}" rel="noopener nofollow">
+        <i class="fab fa-facebook fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $linkedIn := (i18n "linkedIn") }}
+      <a title='{{ $linkedIn }}' class="btn ext-popup" href="https://linkedin.com/sharing/share-offsite/?url={{ $url }}" rel="noopener nofollow">
+        <i class="fab fa-linkedin fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $reddit := (i18n "reddit") }}
+      <a title='{{ $reddit }}' class="btn ext-popup" href="https://reddit.com/submit?url={{ $url }}&amp;title={{ $title }}" rel="noopener nofollow">
+        <i class="fab fa-reddit fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $vk := (i18n "vk") }}
+      <a title='{{ $vk }}' class="btn ext-popup" href="https://vk.com/share.php?url={{ $url }}&amp;title={{ $title }}&amp;description={{ $summary }}" rel="noopener nofollow">
+        <i class="fab fa-vk fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $telegram := (i18n "telegram") }}
+      <a title='{{ $telegram }}' class="btn ext-popup" href="https://t.me/share/url?url={{ $url }}&amp;text={{ $title }}" rel="noopener nofollow">
+        <i class="fab fa-telegram fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $pinterest := (i18n "pinterest") }}
+      <a title='{{ $pinterest }}' class="btn ext-popup" href="http://pinterest.com/pin/create/button/?url={{ $url }}" rel="noopener nofollow">
+        <i class="fab fa-pinterest fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $email := (i18n "email") }}
+      <a title='{{ $email }}' class="btn btn-light" href="mailto:?subject={{ $title }}&amp;body={{ $url }}" rel="noopener nofollow">
+        <i class="fas fa-envelope-open-text fa-fw"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="dropdown-divider"></div>
+
+<div class="px-3">
+  <ul class="list-inline text-center">
+    <li class="list-inline-item mx-1 my-1">
+      {{ $pocket := (i18n "pocket") }}
+      <a title='{{ $pocket }}' class="btn ext-popup" href="https://getpocket.com/edit?url={{ $url }}&amp;title={{ $title }}" target="_blank" rel="noopener nofollow">
+        <i class="fab fa-get-pocket fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $hackerNews := (i18n "hackerNews") }}
+      <a title='{{ $hackerNews }}' class="btn ext-popup" href="https://news.ycombinator.com/submitlink?u={{ $url }}&amp;t={{ $title }}" rel="noopener nofollow">
+        <i class="fab fa-hacker-news fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $liveJournal := (i18n "liveJournal") }}
+      <a title='{{ $liveJournal }}' class="btn ext-popup" href="https://livejournal.com/update.bml?subject={{ $title }}&amp;event={{ $url }}" rel="noopener nofollow">
+        <i class="fas fa-edit fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $ok := (i18n "ok") }}
+      <a title='{{ $ok }}' class="btn ext-popup" href="https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&amp;st.shareUrl={{ $url }}&amp;title={{ $title }}" rel="noopener nofollow">
+        <i class="fab fa-odnoklassniki fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $blogger := (i18n "blogger") }}
+      <a title='{{ $blogger }}' class="btn ext-popup" href="https://blogger.com/blog-this.g?u={{ $url }}&amp;n={{ $title }}&amp;t={{ $summary }}" rel="noopener nofollow">
+        <i class="fab fa-blogger fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $digg := (i18n "digg") }}
+      <a title='{{ $digg }}' class="btn ext-popup" href="https://digg.com/submit?url={{ $url }}" rel="noopener nofollow">
+        <i class="fab fa-digg fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $skype := (i18n "skype") }}
+      <a title='{{ $skype }}' class="btn ext-popup" href="https://web.skype.com/share?url={{ $url }}&amp;title={{ $title }}" rel="noopener nofollow">
+        <i class="fab fa-skype fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $tumblr := (i18n "tumblr") }}
+      <a title='{{ $tumblr }}' class="btn ext-popup" href="https://tumblr.com/widgets/share/tool?canonicalUrl={{ $url }}&amp;title={{ $title }}&amp;content={{ $summary }}&amp;tags={{ $tags }}&amp;posttype=link" rel="noopener nofollow">
+        <i class="fab fa-tumblr fa-fw"></i>
+      </a>
+    </li>
+    <li class="list-inline-item mx-1 my-1">
+      {{ $wordpress := (i18n "wordpress") }}
+      <a title='{{ $wordpress }}' class="btn ext-popup" href="https://wordpress.com/wp-admin/press-this.php?u={{ $url }}&amp;t={{ $title }}&amp;s={{ $summary }}" rel="noopener nofollow">
+        <i class="fab fa-wordpress fa-fw"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="dropdown-divider"></div>
+
+<div class="px-4 pt-1">
+  <div class="input-group">
+    <span class="input-group-text"><i class="fas fa-link fa-fw"></i></span>
+    <input type="text" class="form-control ext-select-all" value="{{ $url }}" readonly/>
+  </div>
+  {{ with $x.File }}
+  <div class="input-group mt-2">
+    <span class="input-group-text"><i class="fas fa-file fa-fw"></i></span>
+    <input type="text" class="form-control ext-select-all" value="{{ .Path }}" readonly/>
+  </div>
+  {{ end }}
+</div>

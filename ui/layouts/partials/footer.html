@@ -1,0 +1,88 @@
+<!-- blocks -->
+{{ $block := (where $.Site.RegularPages "Type" "in" "footer") }}
+
+{{ with $block }}
+<div class="section py-5 border-bottom">
+  <div class="container">
+    <div class="row">
+      {{ range $block }}
+      <div class="col-lg mb-3">
+        <article>
+          <h4 class="h5 border-bottom pb-2 mb-3">{{ .Title }}</h4>
+          <div class="article-body">{{ .Content }}</div>
+        </article>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
+<!-- / blocks -->
+
+<!-- meta -->
+<div class="section py-4">
+  <div class="container">
+    <div class="row text-center text-muted small">
+
+      <!-- copyright -->
+      <div class="col-lg text-lg-start">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            {{ $.Site.Params.organization.name }} &copy; {{ now.Format "2006" }}
+          </li>
+        </ul>
+      </div>
+      <!-- / copyright -->
+
+      <!-- info -->
+      <div class="col-lg text-lg-end">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            <a title="{{ $.Site.Params.developer.name }}" href="{{ $.Site.Params.developer.url }}" target="_blank" rel="noopener nofollow">
+              <i class="fas fa-code fa-fw"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">&bull;</li>
+          <li class="list-inline-item">
+            <i class="fas fa-heart fa-fw"></i>
+          </li>
+          {{ with $.Site.Params.contacts.email }}
+          <li class="list-inline-item">&bull;</li>
+          <li class="list-inline-item">
+            <a title="{{ . }}" href="mailto:{{ . }}">
+              <i class="far fa-envelope fa-fw"></i>
+            </a>
+          </li>
+          {{ end }}
+          {{ if $.Site.Params.license.name }}
+          <li class="list-inline-item">&bull;</li>
+          <li class="list-inline-item">
+            <a title="{{ $.Site.Params.license.name }}" href="{{ $.Site.Params.license.url }}" target="_blank" rel="noopener nofollow">
+              <i class="far fa-copyright fa-fw"></i>
+            </a>
+          </li>
+          {{ end }}
+          {{ with .OutputFormats.Get "rss" }}
+          <li class="list-inline-item">&bull;</li>
+          <li class="list-inline-item">
+            <a title="{{ .Name }}" href="{{ .RelPermalink }}" target="_blank">
+              <i class="fas fa-rss fa-fw"></i>
+            </a>
+          </li>
+          {{ end }}
+          {{ with .OutputFormats.Get "json" }}
+          <li class="list-inline-item">&bull;</li>
+          <li class="list-inline-item">
+            <a title="{{ .Name }}" href="{{ .RelPermalink }}" target="_blank">
+              <i class="far fa-file-code fa-fw"></i>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <!-- / info -->
+
+    </div>
+  </div>
+</div>
+<!-- / meta -->

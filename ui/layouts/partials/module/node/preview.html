@@ -1,0 +1,33 @@
+{{ $x := .context | default "" }}
+{{ $title := .title | default $x.Title}}
+{{ $content := .preview | default $x.Content }}
+{{ $url := .url | default $x.RelPermalink }}
+
+{{ $uniqueID := "" }}{{ with $x.File }}{{ $uniqueID = .UniqueID }}{{ end }}
+{{ $id := .id | default $uniqueID }}
+
+<div id="modal-{{ $id }}" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+    <div class="modal-content shadow-lg">
+      <div class="modal-header">
+        <h5 class="modal-title text-truncate">
+          <a href="{{ $url }}">{{ $title }}</a>
+        </h5>
+        <button type="button" class="close" title="" data-dismiss="modal" aria-label='{{ i18n "close" }}'>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="article-body">{{ $content }}</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" title='{{ i18n "close" }}' data-dismiss="modal">
+          <i class="fas fa-times fa-fw"></i>
+        </button>
+        <a class="btn btn-primary" href="{{ $url }}" title='{{ i18n "readMore" }}' role="button">
+          <i class="fas fa-expand-arrows-alt fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

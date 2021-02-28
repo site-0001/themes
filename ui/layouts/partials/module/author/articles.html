@@ -1,0 +1,15 @@
+{{ $x := .context | default "" }}
+
+<div class="author-articles">
+  <div>
+    <div class="article-body">
+      <ul>
+        {{ range $x.Data.Pages }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</div>

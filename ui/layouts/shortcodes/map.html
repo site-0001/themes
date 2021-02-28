@@ -1,0 +1,25 @@
+{{ if .IsNamedParams }}
+
+{{ $lat := ((.Get "lat") | default "51.505") }}
+{{ $lon := ((.Get "lon") | default "-0.09") }}
+{{ $zoom := ((.Get "zoom") | default "13") }}
+
+{{ $mLat := ((.Get "mLat") | default "") }}
+{{ $mLon := ((.Get "mLon") | default "") }}
+{{ $mTxt := ((.Get "mTxt") | default "") }}
+
+{{ $id := delimit (shuffle (seq 1 32)) "" | md5 }}
+
+<div class="shortcode shortcode-{{ .Name }} mb-3">
+  <div id="map-{{ $id }}" class="ext-map rounded embed-responsive embed-responsive-16by9"
+       data-map-lat="{{ $lat }}"
+       data-map-lon="{{ $lon }}"
+       data-map-zoom="{{ $zoom }}"
+       data-map-marker-lat="{{ $mLat }}"
+       data-map-marker-lon="{{ $mLon }}"
+       data-map-marker-txt="{{ $mTxt }}"></div>
+</div>
+
+{{ else }}
+{{ partial "alert/no-named-params" . }}
+{{ end }}

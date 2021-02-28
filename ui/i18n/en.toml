@@ -1,0 +1,196 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# General
+# ----------------------------------------------------------------------------------------------------------------------
+
+[languages]
+other = "Languages"
+
+[search]
+other = "Search"
+
+[searchGoogle]
+other = "Google Search"
+
+[searchYandex]
+other = "Yandex Search"
+
+[searchBing]
+other = "Bing Search"
+
+[meta]
+other = "Meta"
+
+[categories]
+other = "Categories"
+
+[tags]
+other = "Tags"
+
+[type]
+other = "Type"
+
+[wordCount]
+other = "Word count"
+
+[readingTime]
+other = "Reading time"
+
+[minutes]
+other = "min."
+
+[article]
+other = "Article"
+
+[images]
+other = "Images"
+
+[audio]
+other = "Audio"
+
+[video]
+other = "Video"
+
+[storage]
+other = "Storage"
+
+[comments]
+other = "Comments"
+
+[info]
+other = "Information"
+
+[site]
+other = "Site"
+
+[email]
+other = "Email"
+
+[contacts]
+other = "Contacts"
+
+[seeAlso]
+other = "See also"
+
+[previous]
+other = "Previous"
+
+[next]
+other = "Next"
+
+[links]
+other = "Links"
+
+[readMore]
+other = "More details"
+
+[close]
+other = "Close"
+
+[about]
+other = "About"
+
+[share]
+other = "Share"
+
+[fileID]
+other = "File ID"
+
+[UUID]
+other = "UUID"
+
+[sysPath]
+other = "System path"
+
+[sources]
+other = "Sources"
+
+[articles]
+other = "Articles"
+
+[name]
+other = "Name"
+
+[location]
+other = "Location"
+
+[phone]
+other = "Phone"
+
+[message]
+other = "Message"
+
+[noData]
+other = "Not data..."
+
+[submit]
+other = "Submit"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Social
+# ----------------------------------------------------------------------------------------------------------------------
+
+[facebook]
+other = "Facebook"
+
+[twitter]
+other = "Twitter"
+
+[vk]
+other = "VK"
+
+[youtube]
+other = "YouTube"
+
+[instagram]
+other = "Instagram"
+
+[github]
+other = "GitHub"
+
+[gitlab]
+other = "GitLab"
+
+[bitbucket]
+other = "BitBucket"
+
+[patreon]
+other = "Patreon"
+
+[reddit]
+other = "Reddit"
+
+[linkedIn]
+other = "LinkedIn"
+
+[hackerNews]
+other = "Hacker News"
+
+[ok]
+other = "OK"
+
+[skype]
+other = "Skype"
+
+[telegram]
+other = "Telegram"
+
+[tumblr]
+other = "Tumblr"
+
+[liveJournal]
+other = "LiveJournal"
+
+[pocket]
+other = "Pocket"
+
+[digg]
+other = "Digg"
+
+[wordpress]
+other = "WordPress"
+
+[blogger]
+other = "Blogger"
+
+[pinterest]
+other = "Pinterest"

@@ -1,0 +1,31 @@
+{{ $sameAs := $.Site.Params.organization.social.url | default "" }}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ $.Site.Params.organization.name }}",
+    "legalName": "{{ $.Site.Params.organization.legalName }}",
+    "foundingDate": "{{ $.Site.Params.organization.foundingDate }}",
+    "url": "{{ $.Site.Params.organization.url }}",
+    "logo": "{{ $.Site.Params.organization.logo.url | absURL }}",
+    "description": "{{ $.Site.Params.organization.description | plainify }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ $.Site.Params.organization.address.street }}",
+      "addressLocality": "{{ $.Site.Params.organization.address.locality }}",
+      "addressRegion": "{{ $.Site.Params.organization.address.region }}",
+      "postalCode": "{{ $.Site.Params.organization.address.postalCode }}",
+      "addressCountry": "{{ $.Site.Params.organization.address.country }}"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "{{ $.Site.Params.organization.contactType }}",
+      "telephone": "{{ $.Site.Params.organization.telephone }}",
+      "email": "{{ $.Site.Params.organization.email }}"
+    },
+    "sameAs": [
+      {{ range $i, $e := $sameAs }}{{ if $i }},{{ end }}"{{ $e }}"{{ end }}
+    ]
+  }
+</script>

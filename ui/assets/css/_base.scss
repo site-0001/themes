@@ -1,0 +1,66 @@
+$color-00: #ffffff;
+$color-01: #f8f9fa;
+
+body {
+  //padding-top: 57px;
+  //animation: isFadeIn 1s;
+
+  > header {
+    .navbar {
+      //background-color: $color-00;
+      &-brand {
+        font-family: 'Lobster', sans-serif;
+      }
+    }
+  }
+
+  > footer {
+    background-color: $color-01;
+
+    .fa-heart {
+      color: #fe6e3a;
+    }
+  }
+
+  .section {
+    &:nth-child(odd) {
+      .media {
+        .article-cover {
+          a {
+            background-color: $color-01;
+          }
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      background-color: $color-01;
+    }
+  }
+
+  &.authors {
+    .article-title {
+      position: relative;
+      margin-top: -5rem;
+      z-index: 100;
+    }
+  }
+}
+
+.node-icon,
+.term-icon {
+  $size: 4rem;
+
+  width: $size;
+  height: $size;
+}
+
+.dropdown-menu {
+  &-share {
+    min-width: 20rem;
+  }
+}
+
+a {
+  text-decoration: none;
+}

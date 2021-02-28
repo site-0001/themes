@@ -1,0 +1,46 @@
+{{ $x := .context }}{{ $id := .id }}
+
+{{ $url := (urls.Parse $x.Site.BaseURL) }}
+{{ $urlYa := "https://yandex.ru" }}
+{{ $iconYa := "yandex" }}
+
+{{ if (eq $x.Language.Lang "en") }}
+{{ $urlYa = "https://yandex.com" }}
+{{ $iconYa = "yandex-international" }}
+{{ end }}
+
+<!-- google -->
+{{ if (eq $id "google") }}
+<form action="https://google.com/search" method="get" class="d-flex" target="_blank">
+  <input type="hidden" name="as_sitesearch" value="{{ $url.Host }}"/>
+  <div class="input-group">
+    <span class="input-group-text"><i class="fas fa-search fa-fw"></i></span>
+    <input type="search" class="form-control" name="q" placeholder='{{ i18n "searchGoogle" }}' aria-label='{{ i18n "searchGoogle" }}'/>
+  </div>
+</form>
+{{ end }}
+<!-- / google -->
+
+<!-- yandex -->
+{{ if (eq $id "yandex") }}
+<form action="{{ $urlYa }}/yandsearch" method="get" class="d-flex" target="_blank">
+  <input type="hidden" name="site" value="{{ $url.Host }}"/>
+  <div class="input-group">
+    <span class="input-group-text"><i class="fab fa-{{ $iconYa }} fa-fw"></i></span>
+    <input type="search" class="form-control" name="text" placeholder='{{ i18n "searchYandex" }}' aria-label='{{ i18n "searchYandex" }}'/>
+  </div>
+</form>
+{{ end }}
+<!-- / yandex -->
+
+<!-- bing -->
+{{ if (eq $id "bing") }}
+<form action="https://bing.com/search" method="get" class="d-flex" target="_blank">
+  <input type="hidden" name="q1" value="site:{{ $url.Host }}"/>
+  <div class="input-group">
+    <span class="input-group-text"><i class="fab fa-microsoft fa-fw"></i></span>
+    <input type="search" class="form-control" name="q" placeholder='{{ i18n "searchBing" }}' aria-label='{{ i18n "searchBing" }}'/>
+  </div>
+</form>
+{{ end }}
+<!-- / bing -->

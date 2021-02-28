@@ -1,0 +1,61 @@
+{{ $x := .context | default "" }}
+{{ $view := .view | default "" }}
+{{ $summary := .summary | default $x.Summary }}
+{{ $content := .preview | default $x.Content }}
+
+{{ $uniqueID := "" }}{{ with $x.File }}{{ $uniqueID = .UniqueID }}{{ end }}
+{{ $id := .id | default $uniqueID }}
+
+{{ if (eq $view "0") }}
+<article class="node-{{ $x.Type }}">
+  <header>
+    <div class="article-cover mb-3">
+      {{ partial "module/node/cover/image" (dict "context" $x) }}
+    </div>
+    <div class="article-title">
+      <h4 class="h5">
+        <a href="{{ $x.RelPermalink }}">{{ $x.Title }}</a>
+      </h4>
+    </div>
+  </header>
+  <div class="article-body">
+    {{ partial "module/node/summary" (dict "context" $x "summary" $summary) }}
+  </div>
+</article>
+{{ end }}
+
+{{ if (eq $view "1") }}
+<article class="d-flex node-{{ $x.Type }}">
+  <div class="me-3">
+    <div class="article-cover">
+      {{ partial "module/node/cover/icon" (dict "context" $x) }}
+    </div>
+  </div>
+  <div>
+    <h4 class="h5 mt-0">
+      <a href="{{ $x.RelPermalink }}">{{ $x.Title }}</a>
+    </h4>
+    <div class="article-body">
+      {{ partial "module/node/summary" (dict "context" $x "summary" $summary) }}
+    </div>
+  </div>
+</article>
+{{ end }}
+
+{{ if (eq $view "2") }}
+<article class="d-flex node-{{ $x.Type }}">
+  <div class="me-3">
+    <div class="article-cover">
+      {{ partial "module/author/cover/avatar" (dict "context" $x) }}
+    </div>
+  </div>
+  <div>
+    <h4 class="h5 mt-0">
+      <a href="{{ $x.RelPermalink }}">{{ $x.Title }}</a>
+    </h4>
+    <div class="article-body">
+      {{ partial "module/node/summary" (dict "context" $x "summary" $summary) }}
+    </div>
+  </div>
+</article>
+{{ end }}

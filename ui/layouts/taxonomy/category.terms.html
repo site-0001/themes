@@ -1,0 +1,33 @@
+{{ define "main" }}
+
+<div class="section py-5">
+  <div class="container">
+    {{ partial "breadcrumb" . }}
+    <div class="row row-cols-1 row-cols-lg-2">
+      {{ $type := .Type }}
+      {{ range $key, $value := .Data.Terms.Alphabetical }}
+      {{ $name := .Name }}{{ $count := .Count }}
+      {{ with $.Site.GetPage (printf "/%s/%s" $type $name) }}
+      <div class="col mb-3">
+        <article class="d-flex">
+          <div class="me-3">
+            <div class="article-cover bg-light">
+              {{ partial "module/node/cover/icon" (dict "context" .) }}
+            </div>
+          </div>
+          <div>
+            <h4 class="h5 mt-0">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <sup class="text-muted">{{ $count }}</sup>
+            </h4>
+            <div class="article-body">{{ .Content }}</div>
+          </div>
+        </article>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+{{ end }}

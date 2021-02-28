@@ -1,0 +1,51 @@
+{{ $date := (.Date.Format "2006-01-02T15:04:05") | default "" }}
+{{ $datePublished := (.PublishDate.Format "2006-01-02T15:04:05") | default $date }}
+{{ $dateCreated := (.PublishDate.Format "2006-01-02T15:04:05") | default $date }}
+{{ $dateModified := (.Date.Format "2006-01-02T15:04:05") | default $date }}
+
+{{ $image := .Params.images | default "" }}
+{{ if $image }}{{ $image = index (.Params.images) 0 }}{{ end }}
+
+{{ $keywords := .Params.tags | default "" }}
+{{ $copyrightYear := $.Site.Params.since '-' $.Site.LastChange.Format "2006" }}
+
+{{ $description := $.Site.Params.description }}
+{{ with .Summary }}{{ $description = . }}{{ end }}
+{{ with .Description }}{{ $description = . }}{{ end }}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "{{ .Title }}",
+    "headline": "{{ .Title }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ .Permalink }}"
+    },
+    "description": "{{ $description | plainify }}",
+    "inLanguage": "{{ .Lang }}",
+    "author": [
+      {{ range $i, $e := (.GetTerms "authors") }}{{ if $i }},{{ end }}{"@type": "person","name": "{{ $e.LinkTitle }}"}{{ end }}
+    ],
+    "copyrightYear": "{{ $copyrightYear }}",
+    "datePublished": "{{ $datePublished }}",
+    "dateModified": "{{ $dateModified }}",
+    "url": "{{ .Permalink }}",
+    "wordCount": "{{ .WordCount }}",
+    "image": "{{ $image }}",
+    "keywords": [
+      "{{ delimit $keywords ", " }}"
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ $.Site.BaseURL }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ $.Site.Params.logo | absURL }}",
+        "height": 60,
+        "width": 60
+      }
+    }
+  }
+</script>

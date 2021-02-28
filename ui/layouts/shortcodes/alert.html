@@ -1,0 +1,7 @@
+{{ $type := ((.Get 0) | default "primary") }}
+
+<div class="shortcode shortcode-{{ .Name }}">
+  <div class="alert alert-{{ $type }}" role="alert">
+    {{ with .Inner }}{{ . | $.Page.RenderString (dict "display" "block") }}{{ end }}
+  </div>
+</div>

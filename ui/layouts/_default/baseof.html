@@ -1,0 +1,27 @@
+<!doctype html>
+
+{{ $lang := $.Site.Params.LanguageCode | default "en-US" }}
+
+<html class="h-100" dir="ltr" lang="{{ $lang }}" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile# fb: http://ogp.me/ns/fb#">
+<head>{{ partial "head" . }}</head>
+
+{{ $type := .Type | default "" }}
+{{ $home := "" }}{{ $node := "" }}{{ $page := "" }}
+{{ if .IsHome }}{{ $home = "is-home" }}{{ end }}
+{{ if .IsNode }}{{ $node = "is-node" }}{{ end }}
+{{ if .IsPage }}{{ $page = "is-page" }}{{ end }}
+
+<body class="d-flex flex-column h-100 {{ $home }} {{ $node }} {{ $page }} {{ $type }}">
+<header>{{ partial "header" . }}</header>
+<main class="flex-shrink-0"><div class="mt-5">{{ block "main" . }}{{ end }}</div></main>
+<footer class="mt-auto">{{ partial "footer" . }}</footer>
+
+<!-- scripts -->
+{{ range $.Site.Data.theme.scripts }}
+<script src="{{ . }}" defer></script>
+{{ end }}
+{{ $themeJS := resources.Get "js/theme.min.js" | fingerprint "sha512" }}
+<script src="{{ $themeJS.RelPermalink }}" integrity="{{ $themeJS.Data.Integrity }}" defer></script>
+<!-- / scripts -->
+</body>
+</html>

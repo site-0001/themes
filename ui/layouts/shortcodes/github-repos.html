@@ -1,0 +1,47 @@
+{{ $owner := ((.Get 0) | default "github") }}
+{{ $token := $.Site.Params.api.github.token | base64Decode }}
+{{ $url := "https://api.github.com" }}
+{{ $data := getJSON $url "/users/" $owner "/repos?access_token=" $token }}
+
+<div class="row row-cols-1 row-cols-lg-2">
+  {{ range $data }}
+
+  <div class="col mb-3">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="m-0">
+          <a href="{{ .html_url }}" target="_blank" rel="noopener nofollow">{{ .full_name }}</a>
+        </h5>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-4">
+          <div class="card-body pr-0">
+            <img src="{{ .owner.avatar_url }}" class="card-img" alt=""/>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <p class="card-text">{{ .description | plainify }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="row text-center">
+          <div class="col">
+            <i class="fas fa-star fa-fw me-1"></i> {{ .stargazers_count }}
+          </div>
+          <div class="col">
+            <i class="fas fa-code-branch fa-fw me-1"></i> {{ .forks_count }}
+          </div>
+          {{ if .license }}
+          <div class="col-4">
+            <i class="fas fa-copyright fa-fw me-1"></i> {{ .license.name }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{ end }}
+</div>

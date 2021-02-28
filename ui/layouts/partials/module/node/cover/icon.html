@@ -1,0 +1,6 @@
+{{ $x := .context | default "" }}
+{{ $icon := $x.Params.cover.icon.id | default "fas fa-folder-open" }}
+
+<a href="{{ $x.RelPermalink }}" class="cover-icon d-inline-block text-decoration-none border rounded p-2 text-muted">
+  <span class="d-flex justify-content-center align-items-center node-icon"><i class="{{ $icon }} fa-fw fa-2x"></i></span>
+</a>

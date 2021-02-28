@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+<div class="section py-5">
+  <div class="container">
+    {{ partial "breadcrumb" . }}
+    <div class="row row-cols-1 row-cols-lg-2">
+      {{ range .Paginator.Pages }}
+      <div class="col mb-3">
+        {{ $summary := (delimit (slice .Summary "") "") }}
+        {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+      </div>
+      {{ end }}
+    </div>
+
+    {{ partial "pagination" . }}
+  </div>
+</div>
+
+{{ end }}

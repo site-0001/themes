@@ -1,0 +1,5 @@
+breadcrumb = 1
+
+[storage]
+  [storage.images]
+    size = "200x200"

@@ -1,0 +1,56 @@
+{{ if .IsNamedParams }}
+
+{{ $subject := ((.Get "subject") | default .Page.Title) }}
+{{ $subject = (htmlEscape (printf "[%s] %s" $.Site.Title $subject)) }}
+{{ $token := ((.Get "token") | default "") }}
+
+<div class="shortcode shortcode-form shortcode-{{ .Name }}">
+  <form method="POST" action="https://api.staticforms.xyz/submit">
+    <input type="hidden" name="accessKey" value="{{ $token }}"/>
+    <input type="hidden" name="redirectTo" value="{{ .Page.Permalink }}"/>
+    <input type="hidden" name="subject" value="{{ $subject }}"/>
+    <input type="text" name="honeypot" style="display: none;"/>
+    <div class="form-row">
+      <div class="form-group col-lg">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+          </div>
+          <input type="text" class="form-control" name="name" placeholder='{{ i18n "name" }}' required/>
+        </div>
+      </div>
+      <div class="form-group col-lg">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope-open-text fa-fw"></i></span>
+          </div>
+          <input type="email" class="form-control" name="email" placeholder='{{ i18n "email" }}' required/>
+        </div>
+      </div>
+      <div class="form-group col-lg">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-phone fa-fw"></i></span>
+          </div>
+          <input type="tel" class="form-control" name="phone" placeholder='{{ i18n "phone" }}'/>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-lg">
+        <textarea class="form-control" rows="5" name="message" placeholder='{{ i18n "message" }}' required></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-lg text-right">
+        <button type="submit" class="btn btn-primary is-label">
+          <span><span><i class="fas fa-upload fa-fw"></i></span><span>{{ i18n "submit" }}</span></span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{{ else }}
+{{ partial "alert/no-named-params" . }}
+{{ end }}

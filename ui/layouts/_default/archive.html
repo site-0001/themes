@@ -1,0 +1,31 @@
+{{ define "main" }}
+
+{{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
+
+<div class="section py-5">
+  <div class="container">
+    {{ partial "breadcrumb" . }}
+
+    {{ range $posts.GroupByDate "2006" }}
+    <div class="row mb-3">
+      <div class="col">
+        <article>
+          <h3>{{ .Key }}</h3>
+          <div class="article-body">
+            <ul class="list-unstyled">
+              {{ range .Pages }}
+              <li class="d-flex">
+                <div class="text-muted me-3">{{ .Date.Format "01/02" }}</div>
+                <div><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}

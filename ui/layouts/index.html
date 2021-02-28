@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+{{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
+
+{{ with $posts }}
+<div class="section py-5">
+  <div class="container">
+    {{ range first 1 $posts }}
+    <div class="row">
+      <div class="col mb-3">
+        {{ $summary := (delimit (slice .Summary "") "") }}
+        {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+      </div>
+    </div>
+    {{ end }}
+    <div class="row row-cols-1 row-cols-lg-2">
+      {{ range first 4 (after 1 $posts) }}
+      <div class="col mb-3">
+        {{ $summary := (delimit (slice .Summary "") "") }}
+        {{ partial "summary" (dict "context" . "summary" $summary "view" "0") }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ end }}

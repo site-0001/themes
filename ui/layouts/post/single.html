@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+<div class="section py-5">
+  <div class="container">
+    {{ partial "breadcrumb" . }}
+    <article>
+      <header>
+        <div class="article-cover mb-3">
+          {{ partial "module/node/cover/image" (dict "context" .) }}
+        </div>
+        <div class="article-title">
+          <h1 class="h2 text-center">{{ .Title }}</h1>
+        </div>
+      </header>
+      <footer>{{ partial "module/node/authors" (dict "context" .) }}</footer>
+      {{ $content := (delimit (slice "" .Content) "") }}
+      {{ partial "module/node/tabs" (dict "context" . "content" $content) }}
+    </article>
+  </div>
+</div>
+
+{{ end }}

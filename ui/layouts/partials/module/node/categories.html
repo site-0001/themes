@@ -1,0 +1,18 @@
+{{ $x := .context | default "" }}
+
+{{ if $x.Params.categories }}
+<div class="node-categories">
+  <article>
+    <h4>{{ i18n "categories" }}</h4>
+    <div class="article-body">
+      <ul class="list-inline">
+        {{ range ($x.GetTerms "categories") }}
+        <li class="list-inline-item">
+          <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </article>
+</div>
+{{ end }}

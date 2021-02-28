@@ -1,0 +1,22 @@
+{{ define "breadcrumb" }}
+{{ with .Parent }}
+{{ template "breadcrumb" . }}
+{{ $home_icon := "<i class='fas fa-home'></i>" | safeHTML }}
+<li class="breadcrumb-item">
+  <a href="{{ .RelPermalink }}">{{ if .IsHome }}{{ $home_icon }}{{ else }}{{ .Title }}{{ end }}</a>
+</li>
+{{ end }}
+{{ end }}
+
+{{ if $.Site.Data.config.breadcrumb }}
+{{ if not .IsHome }}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-light p-2 small">
+    {{ template "breadcrumb" . }}
+    <li class="breadcrumb-item active" aria-current="page">
+      {{ .Title }}
+    </li>
+  </ol>
+</nav>
+{{ end }}
+{{ end }}

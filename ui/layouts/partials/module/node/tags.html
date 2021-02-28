@@ -1,0 +1,18 @@
+{{ $x := .context | default "" }}
+
+{{ if $x.Params.tags }}
+<div class="node-tags">
+  <article>
+    <h4>{{ i18n "tags" }}</h4>
+    <div class="article-body">
+      <ul class="list-inline">
+        {{ range ($x.GetTerms "tags") }}
+        <li class="list-inline-item">
+          <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </article>
+</div>
+{{ end }}

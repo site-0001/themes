@@ -1,0 +1,40 @@
+{{ $left := $.Site.Menus.main_left | default "" }}
+{{ $right := $.Site.Menus.main_right | default "" }}
+
+{{ if $left }}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type":"ItemList",
+    "itemListElement": [
+      {{ range $i, $e := $left }}{{ if $i }},{{ end }}
+      {
+        "@type": "SiteNavigationElement",
+        "position": "{{ $e.Weight }}",
+        "name": "{{ $e.Name }}",
+        "url": "{{ $e.URL | absLangURL }}",
+      }
+      {{ end }}
+    ]
+  }
+</script>
+{{ end }}
+
+{{ if $right }}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type":"ItemList",
+    "itemListElement": [
+      {{ range $i, $e := $right }}{{ if $i }},{{ end }}
+      {
+        "@type": "SiteNavigationElement",
+        "name": "{{ $e.Name }}",
+        "url": "{{ $e.URL | absLangURL }}",
+        "position": "{{ $e.Weight }}"
+      }
+      {{ end }}
+    ]
+  }
+</script>
+{{ end }}

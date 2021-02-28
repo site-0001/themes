@@ -1,0 +1,62 @@
+{{ $x := . }}{{ if .IsHome }}{{ $x = $.Site }}{{ end }}
+
+{{ $description := $.Site.Params.description }}
+{{ with .Summary }}{{ $description = . }}{{ end }}
+{{ with .Description }}{{ $description = . }}{{ end }}
+
+{{ $date := ((.Date.Format "Mon, 02 Jan 2006 15:04:05 -0700") | safeHTML) | default "" }}
+
+{{ $pages := slice }}
+{{ if (or $.IsHome $.IsSection) }}{{ $pages = $x.RegularPages }}{{ else }}{{ $pages = $x.Pages }}{{ end }}
+{{ $limit := .Site.Config.Services.RSS.Limit }}
+{{ if (ge $limit 1) }}{{ $pages = $pages | first $limit }}{{ end }}
+
+{{ printf "<?xml version='1.0' encoding='utf-8' standalone='yes'?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if (eq .Title $.Site.Title) }}{{ $.Site.Title }}{{ else }}{{ with .Title }}{{.}} | {{ end }}{{ $.Site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ $description }}</description>
+    {{ with $.Site.LanguageCode }}
+    <language>{{.}}</language>
+    {{ end }}
+    {{ with $.Site.Params.contacts.email }}
+    <managingEditor>{{.}}{{ with $.Site.Params.contacts.name }} ({{.}}){{ end }}</managingEditor>
+    {{ end }}
+    {{ with $.Site.Params.contacts.email }}
+    <webMaster>{{.}}{{ with $.Site.Params.contacts.name }} ({{.}}){{ end }}</webMaster>
+    {{ end }}
+    {{ with $.Site.Params.license.name }}
+    <copyright>{{.}}</copyright>
+    {{ end }}
+    <image>
+      <link>{{ .Permalink }}</link>
+      <url>{{ "img/favicon-128x128.png" | absURL }}</url>
+      <width>128</width>
+      <height>128</height>
+      <title>{{ if (eq .Title $.Site.Title) }}{{ $.Site.Title }}{{ else }}{{ with .Title }}{{.}} | {{ end }}{{ $.Site.Title }}{{ end }}</title>
+      <description>{{ $description }}</description>
+    </image>
+    {{ if (not .Date.IsZero) }}
+    <lastBuildDate>{{ $date }}</lastBuildDate>
+    {{ end }}
+    {{ with .OutputFormats.Get "rss" }}
+    {{ printf "<atom:link href=%q rel='self' type=%q/>" .Permalink .MediaType | safeHTML }}
+    {{ end }}
+    {{ with .OutputFormats.Get "opensearch" }}
+    {{ printf "<atom:link href=%q rel='search' type=%q/>" .Permalink .MediaType | safeHTML }}
+    {{ end }}
+    {{ range $pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <guid isPermaLink="true">{{ .Permalink }}</guid>
+      <description>{{ .Content | html }}</description>
+      <pubDate>{{ $date }}</pubDate>
+      {{ range (.GetTerms "categories") }}
+      <category>{{ .LinkTitle }}</category>
+      {{ end }}
+    </item>
+    {{ end }}
+  </channel>
+</rss>

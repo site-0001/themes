@@ -1,0 +1,44 @@
+{{ $user := ((.Get 0) | default "octocat") }}
+{{ $token := $.Site.Params.api.github.token | base64Decode }}
+{{ $url := "https://api.github.com" }}
+{{ $data := getJSON $url "/users/" $user "?access_token=" $token }}
+
+<div class="row row-cols-1 row-cols-lg-2">
+  <div class="col mb-3">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="m-0">
+          <a href="{{ $data.html_url }}" target="_blank" rel="noopener nofollow">{{ $data.name }}</a>
+        </h5>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-4">
+          <div class="card-body pr-0">
+            <img src="{{ $data.avatar_url }}" class="card-img" alt=""/>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <p class="card-text">{{ $data.bio | plainify }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="row text-center">
+          <div class="col">
+            <i class="fas fa-book fa-fw me-1"></i> {{ $data.public_repos }}
+          </div>
+          <div class="col">
+            <i class="fas fa-file-alt fa-fw me-1"></i> {{ $data.public_gists }}
+          </div>
+          <div class="col">
+            <i class="fas fa-user-friends fa-fw me-1"></i> {{ $data.followers }}
+          </div>
+          <div class="col">
+            <i class="fas fa-user-tag fa-fw me-1"></i> {{ $data.following }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

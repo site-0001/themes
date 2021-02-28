@@ -1,0 +1,7 @@
+{{ $x := .context | default "" }}
+{{ $content := .content | default "" }}
+
+<div class="article-body">
+  {{ $content }}
+  {{ partial "module/node/sources" (dict "context" $x) }}
+</div>

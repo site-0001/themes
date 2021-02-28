@@ -1,0 +1,22 @@
+{{ $x := .context | default "" }}
+
+<div class="row">
+  {{ if $x.Params.categories }}
+  <div class="col-lg mb-3">
+    {{ partial "module/node/categories" (dict "context" $x) }}
+  </div>
+  {{ end }}
+  {{ if $x.Params.tags }}
+  <div class="col-lg mb-3">
+    {{ partial "module/node/tags" (dict "context" $x) }}
+  </div>
+  {{ end }}
+</div>
+<div class="row">
+  <div class="col-lg mb-3">
+    {{ partial "module/node/meta" (dict "context" $x) }}
+  </div>
+  <div class="col-lg mb-3">
+    {{ partial "module/node/related" (dict "context" $x) }}
+  </div>
+</div>

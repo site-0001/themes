@@ -1,0 +1,32 @@
+{{ $x := .context | default "" }}
+
+<ul class="list-inline">
+  <!-- email -->
+  {{ with $x.Params.author.contacts.email }}
+  <li class="list-inline-item mb-2">
+    <a class="btn btn-light" href="mailto:{{ . }}" title='{{ i18n "email" }}' role="button" rel="nofollow">
+      <i class="fas fa-envelope fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  <!-- / email -->
+  <!-- website -->
+  {{ with $x.Params.author.contacts.website }}
+  <li class="list-inline-item mb-2">
+    <a class="btn btn-light" href="{{ . }}" title='{{ i18n "site" }}' target="_blank" role="button" rel="nofollow">
+      <i class="fas fa-globe-americas fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  <!-- / website -->
+  <!-- social -->
+  {{ range $x.Params.author.contacts.social }}
+  {{ $url := (urls.Parse .) }}{{ $name := (split $url.Host ".") }}
+  <li class="list-inline-item mb-2">
+    <a class="btn btn-light" href="{{ . }}" title="{{ index $name 0 | humanize }}" target="_blank" role="button" rel="nofollow">
+      <i class="fab fa-{{ index $name 0 }} fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  <!-- / social -->
+</ul>

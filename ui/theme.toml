@@ -1,0 +1,12 @@
+name = "UI"
+license = ""
+licenselink = ""
+description = ""
+homepage = ""
+tags = ["website", "blog"]
+features = ["posts", "shortcodes", "comments"]
+min_version = "0.80.0"
+
+[author]
+  name = "Kitsune Solar"
+  homepage = "https://kitsune.solar"

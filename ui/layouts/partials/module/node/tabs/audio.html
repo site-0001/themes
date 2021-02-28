@@ -1,0 +1,19 @@
+{{ $x := .context | default "" }}
+{{ with ($x.Page.Resources.Match "storage/*") }}
+
+<div class="article-body">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    {{ range . }}
+    {{ if (in .MediaType.MainType "audio") }}
+    <div class="col mb-3">
+      <div>
+        <audio class="w-100" src="{{ .RelPermalink }}" controls preload="auto"></audio>
+        <p class="text-muted small">{{ .Name | path.Base }}</p>
+      </div>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}

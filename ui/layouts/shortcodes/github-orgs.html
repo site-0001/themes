@@ -1,0 +1,32 @@
+{{ $user := ((.Get 0) | default "octocat") }}
+{{ $token := $.Site.Params.api.github.token | base64Decode }}
+{{ $url := "https://api.github.com" }}
+{{ $data := getJSON $url "/users/" $user "/orgs?access_token=" $token }}
+
+<div class="row row-cols-1 row-cols-lg-2">
+  {{ range $data }}
+
+  <div class="col mb-3">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="m-0">
+          <a href="https://github.com/{{ .login }}" target="_blank" rel="noopener nofollow">{{ .login }}</a>
+        </h5>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-4">
+          <div class="card-body pr-0">
+            <img src="{{ .avatar_url }}" class="card-img" alt=""/>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <p class="card-text">{{ .description | plainify }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{ end }}
+</div>

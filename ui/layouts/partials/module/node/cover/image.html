@@ -1,0 +1,42 @@
+{{ $x := .context | default "" }}
+{{ $storageEXT := "https://images.unsplash.com" }}
+
+{{ $imgINT := ($x.Page.Resources.Match "storage/cover.*") | default "" }}
+{{ $imgEXT := $x.Params.images | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3") }}
+
+{{ $width := $x.Params.cover.image.width | default "1140" }}
+{{ $height := $x.Params.cover.image.height | default "540" }}
+{{ $crop := $x.Params.cover.image.crop | default "entropy" }}
+{{ $fit := "crop" }}
+
+{{ $uniqueID := "" }}{{ with $x.File }}{{ $uniqueID = .UniqueID }}{{ end }}
+{{ $id := $uniqueID }}
+
+<div id="cover-controls-{{ $id }}" class="cover-image carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner rounded">
+    {{ with $imgINT }}
+    {{ range . }}
+    {{ $src := . }}{{ $thumb := $src.Fill (printf "%sx%s %s" $width $height $crop) }}{{ $filename := .Name | path.Base }}
+    <div class='carousel-item {{ if in $filename ".00." }}active{{ end }}'>
+      <img class="d-block w-100" src="{{ $thumb.RelPermalink }}" alt=""/>
+    </div>
+    {{ end }}
+    {{ else }}
+    {{ range $key, $value := $imgEXT }}
+    <div class="carousel-item {{ if eq $key 0 }}active{{ end }}">
+      <img class="d-block w-100" src="{{ $value }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}" alt=""/>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+  {{ if or (len $imgINT) (len $imgEXT) | lt 1 }}
+  <a class="carousel-control-prev" href="#cover-controls-{{ $id }}" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">{{ i18n "previous" }}</span>
+  </a>
+  <a class="carousel-control-next" href="#cover-controls-{{ $id }}" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">{{ i18n "next" }}</span>
+  </a>
+  {{ end }}
+</div>
