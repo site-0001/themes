@@ -78,6 +78,17 @@
             </a>
           </li>
           {{ end }}
+          <li class="list-inline-item">&bull;</li>
+          <li class="list-inline-item dropup">
+            <a title='{{ i18n "languages" }}' class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-language fa-fw me-1"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end shadow">
+              {{ range $.Site.Home.AllTranslations }}
+              <a class="dropdown-item" href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}">{{ .Language.LanguageName }}</a>
+              {{ end }}
+            </div>
+          </li>
         </ul>
       </div>
       <!-- / info -->
