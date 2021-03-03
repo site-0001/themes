@@ -12,7 +12,8 @@
 <!-- google -->
 {{ if (eq $id "google") }}
 <form action="https://google.com/search" method="get" class="d-flex" target="_blank">
-  <input type="hidden" name="as_sitesearch" value="{{ $url.Host }}"/>
+  <input type="hidden" name="domains" value="{{ $url.Host }}"/>
+  <input type="hidden" name="sitesearch" value="{{ $url.Host }}"/>
   <div class="input-group">
     <span class="input-group-text"><i class="fas fa-search fa-fw"></i></span>
     <input type="search" class="form-control" name="q" placeholder='{{ i18n "searchGoogle" }}' aria-label='{{ i18n "searchGoogle" }}'/>

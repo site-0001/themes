@@ -1,0 +1,66 @@
+$elements: 'ul', 'ol', 'table', 'p', 'blockquote';
+$shortcodes: 'diagram', 'quote', 'tags', 'categories', 'progress', 'alert', 'spoiler > div';
+
+body {
+  @for $i from 1 through 6 {
+    h#{$i} {
+      @include font-cond();
+    }
+  }
+}
+
+body {
+  .article {
+    &-body {
+      @each $element in $elements {
+        #{$elements} {
+          @include font-serif();
+        }
+      }
+
+      @each $shortcode in $shortcodes {
+        .shortcode-#{$shortcode} {
+          @include font-serif();
+        }
+      }
+
+      blockquote {
+        border-left: .5rem solid #f8f9fa;
+        padding-left: .5rem;
+      }
+
+      kbd {
+        @include font-mono();
+      }
+
+      code {
+        @include font-mono();
+        white-space: nowrap;
+      }
+
+      pre {
+        @include font-mono();
+        background-color: #f8f9fa;
+        border-radius: .25rem;
+        padding: 1rem;
+        max-height: 40rem;
+
+        > code {
+          display: block;
+          white-space: pre;
+        }
+      }
+
+      .figure {
+        &.is-table {
+          display: inline-table;
+
+          .figure-caption {
+            display: table-caption;
+            caption-side: bottom;
+          }
+        }
+      }
+    }
+  }
+}

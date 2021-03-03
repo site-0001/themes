@@ -10,8 +10,7 @@ fonts = [
 styles = [
   "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css",
   "https://cdn.jsdelivr.net/npm/lightgallery/dist/css/lightgallery.min.css",
-  "https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.min.css",
-  "https://cdn-storage.github.io/styles/bootstrap/theme.min.css"
+  "https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.min.css"
 ]
 
 scripts = [
@@ -24,17 +23,17 @@ scripts = [
 ]
 
 dns_prefetch = [
-  "//gravatar.com/",
-  "//cdn.jsdelivr.net/",
-  "//images.unsplash.com/",
-  "//imgur.com/"
+  "//gravatar.com",
+  "//cdn.jsdelivr.net",
+  "//images.unsplash.com",
+  "//imgur.com"
 ]
 
 pre_connect = [
-  "https://gravatar.com/",
-  "https://fonts.gstatic.com/",
-  "https://cdn.jsdelivr.net/",
-  "https://images.unsplash.com/"
+  "https://gravatar.com",
+  "https://fonts.gstatic.com",
+  "https://cdn.jsdelivr.net",
+  "https://images.unsplash.com"
 ]
 
 color = "#7289da"

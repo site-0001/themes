@@ -68,13 +68,10 @@
     </a>
   </li>
   {{ end }}
-  <li class="nav-item dropdown ms-auto">
-    <a title='{{ i18n "share" }}' class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+  <li class="nav-item ms-auto" role="presentation">
+    <a title='{{ i18n "share" }}' class="nav-link" id="node-share-tab" data-bs-toggle="tab" href="#node-share" role="tab" aria-controls="node-share" aria-selected="false">
       <i class="fas fa-share fa-fw"></i>
     </a>
-    <div class="dropdown-menu dropdown-menu-end dropdown-menu-share shadow">
-      {{ partial "module/node/tabs/share" (dict "context" $x) }}
-    </div>
   </li>
 </ul>
 <div class="tab-content">
@@ -116,4 +113,9 @@
     {{ partial "module/author/articles" (dict "context" $x) }}
   </div>
   {{ end }}
+  <!-- node-share -->
+  <div class="tab-pane" id="node-share" role="tabpanel" aria-labelledby="node-share-tab">
+    {{ partial "module/node/tabs/share" (dict "context" $x) }}
+  </div>
+  <!-- / node-share -->
 </div>

@@ -1,0 +1,60 @@
+$color-00: #ffffff;
+$color-01: #f8f9fa;
+
+html {
+  scroll-padding-top: 4rem;
+}
+
+body {
+  @include font-base();
+  padding-top: 57px;
+
+  a {
+    text-decoration: none;
+  }
+
+  &.type-authors {
+    .article-title {
+      position: relative;
+      margin-top: -5rem;
+      z-index: 100;
+    }
+  }
+}
+
+body {
+  > header {
+    .navbar {
+      @include font-cond();
+
+      &-brand {
+        @include font-brand();
+      }
+    }
+  }
+
+  > footer {
+    > .section {
+      &:nth-child(even) {
+        background-color: $color-01;
+      }
+
+      &:nth-child(odd) {
+        background-color: $color-01;
+      }
+    }
+
+    .fa-heart {
+      color: #fe6e3a;
+    }
+  }
+
+  > main {
+    .node-icon {
+      $size: 4rem;
+
+      width: $size;
+      height: $size;
+    }
+  }
+}
