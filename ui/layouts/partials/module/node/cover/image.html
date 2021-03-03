@@ -4,8 +4,8 @@
 {{ $imgINT := ($x.Page.Resources.Match "storage/cover.*") | default "" }}
 {{ $imgEXT := $x.Params.images | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3") }}
 
-{{ $width := $x.Params.cover.image.width | default "1140" }}
-{{ $height := $x.Params.cover.image.height | default "540" }}
+{{ $width := $x.Params.cover.image.width | default "1600" }}
+{{ $height := $x.Params.cover.image.height | default "900" }}
 {{ $crop := $x.Params.cover.image.crop | default "entropy" }}
 {{ $fit := "crop" }}
 
@@ -24,7 +24,7 @@
     {{ else }}
     {{ range $key, $value := $imgEXT }}
     <div class="carousel-item {{ if eq $key 0 }}active{{ end }}">
-      <img class="d-block w-100" src="{{ $value }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}" alt=""/>
+      <img class="d-block w-100" src="{{ $value }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format" alt=""/>
     </div>
     {{ end }}
     {{ end }}
