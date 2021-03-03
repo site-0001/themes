@@ -26,16 +26,14 @@
 <!-- fonts -->
 {{ $fonts := $.Site.Data.theme.fonts }}
 {{ range $fonts }}
-<link rel="preload" href="{{ . }}" as="style" crossorigin="anonymous" onload="this.rel='stylesheet'"/>
-<noscript><link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/></noscript>
+<link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
 {{ end }}
 <!-- / fonts -->
 
 <!-- styles -->
 {{ $styles := $.Site.Data.theme.styles }}
 {{ range $styles }}
-<link rel="preload" href="{{ . }}" as="style" crossorigin="anonymous" onload="this.rel='stylesheet'"/>
-<noscript><link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/></noscript>
+<link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
 {{ end }}
 
 {{ $style := resources.Get "css/theme.scss" | toCSS | minify | fingerprint "sha512" }}
