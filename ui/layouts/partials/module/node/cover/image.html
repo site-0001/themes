@@ -24,7 +24,7 @@
     {{ else }}
     {{ range $key, $value := $imgEXT }}
     <div class="carousel-item {{ if eq $key 0 }}active{{ end }}">
-      <img class="d-block w-100" src="{{ $value }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format" alt=""/>
+      <img class="d-block w-100" src="{{ $value }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format" alt="{{ $value }}"/>
     </div>
     {{ end }}
     {{ end }}

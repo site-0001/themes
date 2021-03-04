@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
   extPopUp();
   extGoogleForm();
   extMap();
-  //extDiagram();
+  extDiagram();
 });
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -98,33 +98,6 @@ function extGoogleForm() {
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
-// Diagram (Mermaid).
-// ---------------------------------------------------------------------------------------------------------------------
-
-function extDiagram() {
-  const $font = 'inherit';
-  const $config = {
-    startOnLoad: true,
-    fontFamily: $font,
-    securityLevel: 'strict',
-    flowchart: {
-      fontFamily: $font
-    },
-    sequence: {
-      fontFamily: $font,
-      actorFontFamily: $font,
-      noteFontFamily: $font,
-      messageFontFamily: $font
-    },
-    gantt: {
-      fontFamily: $font
-    }
-  };
-
-  mermaid.initialize($config);
-}
-
-// ---------------------------------------------------------------------------------------------------------------------
 // Map (Leaflet).
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -151,4 +124,31 @@ function extMap() {
       $marker.bindPopup($data.mapMarkerTxt);
     }
   });
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Diagram (Mermaid).
+// ---------------------------------------------------------------------------------------------------------------------
+
+function extDiagram() {
+  const $font = 'inherit';
+  const $config = {
+    startOnLoad: true,
+    fontFamily: $font,
+    securityLevel: 'strict',
+    flowchart: {
+      fontFamily: $font
+    },
+    sequence: {
+      fontFamily: $font,
+      actorFontFamily: $font,
+      noteFontFamily: $font,
+      messageFontFamily: $font
+    },
+    gantt: {
+      fontFamily: $font
+    }
+  };
+
+  mermaid.initialize($config);
 }
