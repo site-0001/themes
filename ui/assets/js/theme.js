@@ -4,28 +4,14 @@
 // Init.
 // ---------------------------------------------------------------------------------------------------------------------
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function() {
   extGallery();
   extSelectAll();
   extPopUp();
   extGoogleForm();
   extDiagram();
   extMap();
-  extNavbarCanvas();
 });
-
-// ---------------------------------------------------------------------------------------------------------------------
-// Navbar Canvas.
-// ---------------------------------------------------------------------------------------------------------------------
-
-function extNavbarCanvas() {
-  const $data = $('[data-toggle="navbar-canvas"]');
-  const $class = $('.navbar-collapse-canvas');
-
-  $data.on('click', function () {
-    $class.toggleClass('open')
-  })
-}
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Gallery.

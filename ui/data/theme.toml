@@ -23,16 +23,17 @@ scripts = [
 ]
 
 dns_prefetch = [
-  "//gravatar.com",
+  "//fonts.gstatic.com",
   "//cdn.jsdelivr.net",
+  "//gravatar.com",
   "//images.unsplash.com",
-  "//imgur.com"
+  "//i.imgur.com"
 ]
 
 pre_connect = [
-  "https://gravatar.com",
   "https://fonts.gstatic.com",
   "https://cdn.jsdelivr.net",
+  "https://gravatar.com",
   "https://images.unsplash.com"
 ]
 
