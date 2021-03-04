@@ -11,7 +11,7 @@
 {{ if $.Site.Data.config.breadcrumb }}
 {{ if not .IsHome }}
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb small">
+  <ol class="breadcrumb bg-light p-2 small rounded">
     {{ template "breadcrumb" . }}
     <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
   </ol>
