@@ -9,8 +9,8 @@ window.addEventListener('load', function() {
   extSelectAll();
   extPopUp();
   extGoogleForm();
-  extDiagram();
   extMap();
+  //extDiagram();
 });
 
 // ---------------------------------------------------------------------------------------------------------------------
