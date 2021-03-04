@@ -11,12 +11,12 @@
     },
     "page": {
       "name": "{{ .Page.Title }}",
-      "image": [{{ range $i, $e := (.Page.Params.images) }}{{ if $i }},{{ end }}"{{$e}}"{{ end }}],
+      "images": [{{ range $i, $e := (.Page.Params.images) }}{{ if $i }},{{ end }}"{{$e}}"{{ end }}],
       "description": {{ jsonify ((.Page.Description | default .Page.Summary) | plainify | chomp) }},
       "content": {{ jsonify (.Page.Plain | chomp) }},
-      "author": [{{ range $i, $e := (.GetTerms "authors") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
-      "category": [{{ range $i, $e := (.GetTerms "categories") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
-      "tag": [{{ range $i, $e := (.GetTerms "tags") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
+      "authors": [{{ range $i, $e := (.GetTerms "authors") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
+      "categories": [{{ range $i, $e := (.GetTerms "categories") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
+      "tags": [{{ range $i, $e := (.GetTerms "tags") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
       "date": {
         "created": "{{ $dateC }}",
         "published": "{{ $dateP }}",
