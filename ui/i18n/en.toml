@@ -8,13 +8,13 @@ other = "Languages"
 [search]
 other = "Search"
 
-[searchGoogle]
+[search_google]
 other = "Google Search"
 
-[searchYandex]
+[search_yandex]
 other = "Yandex Search"
 
-[searchBing]
+[search_bing]
 other = "Bing Search"
 
 [meta]
@@ -29,10 +29,10 @@ other = "Tags"
 [type]
 other = "Type"
 
-[wordCount]
+[word_count]
 other = "Word count"
 
-[readingTime]
+[reading_time]
 other = "Reading time"
 
 [minutes]
@@ -80,7 +80,7 @@ other = "Next"
 [links]
 other = "Links"
 
-[readMore]
+[read_more]
 other = "More details"
 
 [close]
@@ -92,13 +92,13 @@ other = "About"
 [share]
 other = "Share"
 
-[fileID]
+[file_id]
 other = "File ID"
 
-[UUID]
+[uuid]
 other = "UUID"
 
-[sysPath]
+[sys_path]
 other = "System path"
 
 [sources]
@@ -194,3 +194,110 @@ other = "Blogger"
 
 [pinterest]
 other = "Pinterest"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Contact Form
+# ----------------------------------------------------------------------------------------------------------------------
+
+[form.contact.name]
+other = "Name"
+
+[form.contact.email]
+other = "Email"
+
+[form.contact.phone]
+other = "Phone"
+
+[form.contact.message_placeholder]
+other = "Enter message..."
+
+[form.contact.submit]
+other = "Submit"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Donation Form
+# ----------------------------------------------------------------------------------------------------------------------
+
+[form.donate.targets]
+other = "Target transfer..."
+
+[form.donate.targets_help]
+other = "Enter target transfer."
+
+[form.donate.sum_help]
+other = "Set amount."
+
+[form.donate.card]
+other = "Bank Card"
+
+[form.donate.yooMoney]
+other = "YooMoney"
+
+[form.donate.mobile_phone]
+other = "Mobile Phone"
+
+[form.donate.payment_type_help]
+other = "Select a transfer method."
+
+[form.donate.comment_placeholder]
+other = "Enter a comment (if available)..."
+
+[form.donate.comment_help]
+other = "Enter an accompanying comment (max 200 characters)."
+
+[form.donate.name]
+other = "Name"
+
+[form.donate.name_help]
+other = "Check if you want to specify name of sender."
+
+[form.donate.email]
+other = "E-mail"
+
+[form.donate.email_help]
+other = "Check if you want to specify sender's e-mail."
+
+[form.donate.phone]
+other = "Phone"
+
+[form.donate.phone_help]
+other = "Check if you want to specify sender's phone number."
+
+[form.donate.address]
+other = "Address"
+
+[form.donate.address_help]
+other = "Check if you want to specify sender address."
+
+[form.donate.paypal]
+other = "PayPal"
+
+[form.donate.patreon]
+other = "Patreon"
+
+[form.donate.liberapay]
+other = "Liberapay"
+
+[form.donate.kofi]
+other = "Ko-fi"
+
+[form.donate.buymeacoffee]
+other = "Buy Me a Coffee"
+
+[form.donate.submit]
+other = "Transfer"
+
+[form.donate.btc]
+other = "BTC"
+
+[form.donate.eth]
+other = "ETH"
+
+[form.donate.xmr]
+other = "XMR"
+
+[form.donate.cards]
+other = "Bank Cards"
+
+[form.donate.crypto]
+other = "Crypto"

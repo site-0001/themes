@@ -16,7 +16,7 @@
   <input type="hidden" name="sitesearch" value="{{ $url.Host }}"/>
   <div class="input-group">
     <span class="input-group-text"><i class="fas fa-search fa-fw"></i></span>
-    <input type="search" class="form-control" name="q" placeholder='{{ i18n "searchGoogle" }}' aria-label='{{ i18n "searchGoogle" }}'/>
+    <input type="search" class="form-control" name="q" placeholder='{{ i18n "search_google" }}' aria-label='{{ i18n "search_google" }}'/>
   </div>
 </form>
 {{ end }}
@@ -28,7 +28,7 @@
   <input type="hidden" name="site" value="{{ $url.Host }}"/>
   <div class="input-group">
     <span class="input-group-text"><i class="fab fa-{{ $iconYa }} fa-fw"></i></span>
-    <input type="search" class="form-control" name="text" placeholder='{{ i18n "searchYandex" }}' aria-label='{{ i18n "searchYandex" }}'/>
+    <input type="search" class="form-control" name="text" placeholder='{{ i18n "search_yandex" }}' aria-label='{{ i18n "search_yandex" }}'/>
   </div>
 </form>
 {{ end }}
@@ -40,7 +40,7 @@
   <input type="hidden" name="q1" value="site:{{ $url.Host }}"/>
   <div class="input-group">
     <span class="input-group-text"><i class="fab fa-microsoft fa-fw"></i></span>
-    <input type="search" class="form-control" name="q" placeholder='{{ i18n "searchBing" }}' aria-label='{{ i18n "searchBing" }}'/>
+    <input type="search" class="form-control" name="q" placeholder='{{ i18n "search_bing" }}' aria-label='{{ i18n "search_bing" }}'/>
   </div>
 </form>
 {{ end }}

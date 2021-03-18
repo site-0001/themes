@@ -4,9 +4,9 @@
 {{ with $block }}
 <div class="section py-5 border-bottom">
   <div class="container">
-    <div class="row">
+    <div class="row g-3">
       {{ range $block }}
-      <div class="col-lg mb-3">
+      <div class="col-lg">
         <article>
           <h4 class="h5 border-bottom pb-2 mb-3">{{ .Title }}</h4>
           <div class="article-body">{{ .Content }}</div>
