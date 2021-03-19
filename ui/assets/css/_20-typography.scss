@@ -1,5 +1,5 @@
 $elements: 'ul', 'ol', 'table', 'p', 'blockquote';
-$shortcodes: 'diagram', 'quote', 'tags', 'categories', 'progress', 'alert', 'spoiler > div';
+$shortcodes: 'diagram', 'quote', 'tags', 'categories', 'progress', 'alert', 'spoiler > div', 'user', 'abbr', 'mark';
 
 body {
   @for $i from 1 through 6 {
