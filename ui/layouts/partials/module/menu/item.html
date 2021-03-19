@@ -3,7 +3,8 @@
 {{ range (index $x.Site.Menus $id) }}
 
 {{ $active = (or ($x.IsMenuCurrent .Menu .) ($x.HasMenuCurrent .Menu .)) }}
-{{ with .Page }}{{ $active = (or ($active) ($.IsDescendant .)) }}{{ end }}
+{{ $active = (or $active (eq .Name $x.Title)) }}
+
 {{ if .HasChildren }}
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -12,6 +13,7 @@
   <div class="dropdown-menu shadow">
     {{ range .Children }}
     {{ $active = (or ($x.IsMenuCurrent .Menu .) ($x.HasMenuCurrent .Menu .)) }}
+    {{ $active = (or $active (eq .Name $x.Title)) }}
     <a class="dropdown-item {{ if $active }}active{{ end }}" href="{{ .URL | relURL }}">
       {{ if .Pre }}<i class="{{ .Pre }} fa-fw me-1"></i>{{ end }}<span>{{ .Name }}</span>
     </a>
