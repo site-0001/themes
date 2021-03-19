@@ -301,3 +301,6 @@ other = "Банковские карты"
 
 [form.donate.crypto]
 other = "Crypto"
+
+[form.donate.services]
+other = "Сервисы"

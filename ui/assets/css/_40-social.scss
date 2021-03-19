@@ -135,5 +135,33 @@ a {
       background-color: $color;
       border-color: $color;
     }
+
+    &[href*='paypal.me'] {
+      $color: #003087;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='liberapay.com'] {
+      $color: #f6c915;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='ko-fi.com'] {
+      $color: #00b9fe;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
+
+    &[href*='buymeacoffee.com'] {
+      $color: #fd0;
+      color: hsl(0, 0%, 100%);
+      background-color: $color;
+      border-color: $color;
+    }
   }
 }

@@ -301,3 +301,6 @@ other = "Bank Cards"
 
 [form.donate.crypto]
 other = "Crypto"
+
+[form.donate.services]
+other = "Services"
