@@ -3,9 +3,6 @@
 {{ $summary := (.summary | default $x.Summary) }}
 {{ $content := (.preview | default $x.Content) }}
 
-{{ $uniqueID := "" }}{{ with $x.File }}{{ $uniqueID = .UniqueID }}{{ end }}
-{{ $id := (.id | default $uniqueID) }}
-
 {{ if (eq $view "0") }}
 <article class="node-{{ $x.Type }}">
   <header>

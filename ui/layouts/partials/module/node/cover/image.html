@@ -1,4 +1,5 @@
 {{ $x := (.context | default "") }}
+{{ $id := ($x.File.UniqueID | default "") }}
 {{ $imgINT := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
 {{ $imgEXT := ($x.Params.images | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3")) }}
 
@@ -7,17 +8,15 @@
 {{ $crop := ($x.Params.cover.image.crop | default "entropy") }}
 {{ $fit := "crop" }}
 
-{{ $uniqueID := "" }}
-{{ with ($x.File) }}{{ $uniqueID = (.UniqueID) }}{{ end }}
-{{ $id := $uniqueID }}
-
 <div id="cover-controls-{{ $id }}" class="cover-image carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner rounded">
     {{ with $imgINT }}
 
     <!-- image-internal -->
     {{ range . }}
-    {{ $src := . }}{{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}{{ $filename := (.Name | path.Base) }}
+    {{ $src := . }}
+    {{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
+    {{ $filename := (.Name | path.Base) }}
     <div class='carousel-item {{ if in $filename ".00." }}active{{ end }}'>
       <img class="d-block w-100" src="{{ $thumb.RelPermalink }}" alt=""/>
     </div>
