@@ -1,7 +1,7 @@
 {{ $x := (.context | default "") }}
 {{ $id := (printf "node-cover-%s" ($x.File.UniqueID | default "")) }}
-{{ $imgINT := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
-{{ $imgEXT := ($x.Params.images | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3")) }}
+{{ $img_int := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
+{{ $img_ext := ($x.Params.images | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3")) }}
 
 {{ $width := ($x.Params.cover.image.width | default "1600") }}
 {{ $height := ($x.Params.cover.image.height | default "900") }}
@@ -10,14 +10,22 @@
 
 <div id="{{ $id }}" class="cover-image carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner rounded">
-    {{ with $imgINT }}
+    {{ with $img_int }}
 
     <!-- image-internal -->
-    {{ range . }}
-    {{ $src := . }}
+    {{ if ((len $img_int) | lt 1) }}
+    <div class="carousel-indicators">
+      {{ range $key, $value := $img_int }}
+      <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $key }}" class="{{ if (eq $key 0) }}active{{ end }}" aria-label="Slide {{ $key }}"></button>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ range $key, $value := . }}
+    {{ $src := $value }}
     {{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
     {{ $filename := (.Name | path.Base) }}
-    <div class='carousel-item {{ if in $filename ".00." }}active{{ end }}'>
+    <div class='carousel-item {{ if (in $filename ".00.") }}active{{ end }}'>
       <img class="d-block w-100" src="{{ $thumb.RelPermalink }}" alt="Image"/>
     </div>
     {{ end }}
@@ -26,8 +34,16 @@
     {{ else }}
 
     <!-- image-external -->
-    {{ range $key, $value := $imgEXT }}
-    <div class="carousel-item {{ if eq $key 0 }}active{{ end }}">
+    {{ if ((len $img_ext) | lt 1) }}
+    <div class="carousel-indicators">
+      {{ range $key, $value := $img_ext }}
+      <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $key }}" class="{{ if (eq $key 0) }}active{{ end }}" aria-label="Slide {{ $key }}"></button>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ range $key, $value := $img_ext }}
+    <div class="carousel-item {{ if (eq $key 0) }}active{{ end }}">
       {{ $url := urls.Parse $value }}
       {{ if (eq $url.Host "images.unsplash.com") }}
       <img class="d-block w-100" src="{{ $value }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format" alt="{{ $value }}"/>
@@ -42,7 +58,7 @@
   </div>
 
   <!-- buttons-control -->
-  {{ if ((or (len $imgINT) (len $imgEXT)) | lt 1) }}
+  {{ if ((or (len $img_int) (len $img_ext)) | lt 1) }}
   <button class="carousel-control-prev" type="button" data-bs-target="#{{ $id }}" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">{{ i18n "previous" }}</span>
