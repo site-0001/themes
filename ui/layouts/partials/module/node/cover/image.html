@@ -18,7 +18,7 @@
     {{ $thumb := ($src.Fill (printf "%sx%s %s" $width $height $crop)) }}
     {{ $filename := (.Name | path.Base) }}
     <div class='carousel-item {{ if in $filename ".00." }}active{{ end }}'>
-      <img class="d-block w-100" src="{{ $thumb.RelPermalink }}" alt=""/>
+      <img class="d-block w-100" src="{{ $thumb.RelPermalink }}" alt="Image"/>
     </div>
     {{ end }}
     <!-- / image-internal -->
