@@ -1,5 +1,5 @@
 {{ $x := (.context | default "") }}
-{{ $id := ($x.File.UniqueID | default "") }}
+{{ $id := (printf "node-cover-%s" ($x.File.UniqueID | default "")) }}
 {{ $imgINT := (($x.Page.Resources.Match "storage/cover.*") | default "") }}
 {{ $imgEXT := ($x.Params.images | default (slice "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3")) }}
 
@@ -8,7 +8,7 @@
 {{ $crop := ($x.Params.cover.image.crop | default "entropy") }}
 {{ $fit := "crop" }}
 
-<div id="cover-controls-{{ $id }}" class="cover-image carousel slide carousel-fade" data-bs-ride="carousel">
+<div id="{{ $id }}" class="cover-image carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner rounded">
     {{ with $imgINT }}
 
@@ -43,11 +43,11 @@
 
   <!-- buttons-control -->
   {{ if ((or (len $imgINT) (len $imgEXT)) | lt 1) }}
-  <button class="carousel-control-prev" type="button" data-bs-target="#cover-controls-{{ $id }}" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#{{ $id }}" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">{{ i18n "previous" }}</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#cover-controls-{{ $id }}" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#{{ $id }}" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">{{ i18n "next" }}</span>
   </button>
