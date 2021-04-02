@@ -33,7 +33,7 @@
       {{ if (eq $url.Host "images.unsplash.com") }}
       <img class="d-block w-100" src="{{ $value }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format" alt="{{ $value }}"/>
       {{ else }}
-      <img class="d-block w-100" src="{{ $value }}" height="{{ $height }}" alt="{{ $value }}"/>
+      <img class="d-block w-100" src="{{ $value }}" alt="{{ $value }}"/>
       {{ end }}
     </div>
     {{ end }}
@@ -44,14 +44,14 @@
 
   <!-- buttons-control -->
   {{ if ((or (len $imgINT) (len $imgEXT)) | lt 1) }}
-  <a class="carousel-control-prev" type="button" data-bs-target="#cover-controls-{{ $id }}" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#cover-controls-{{ $id }}" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">{{ i18n "previous" }}</span>
-  </a>
-  <a class="carousel-control-next" type="button" data-bs-target="#cover-controls-{{ $id }}" data-bs-slide="next">
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#cover-controls-{{ $id }}" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">{{ i18n "next" }}</span>
-  </a>
+  </button>
   {{ end }}
   <!-- / buttons-control -->
 
