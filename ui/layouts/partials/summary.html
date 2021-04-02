@@ -1,10 +1,10 @@
-{{ $x := .context | default "" }}
-{{ $view := .view | default "" }}
-{{ $summary := .summary | default $x.Summary }}
-{{ $content := .preview | default $x.Content }}
+{{ $x := (.context | default "") }}
+{{ $view := (.view | default "") }}
+{{ $summary := (.summary | default $x.Summary) }}
+{{ $content := (.preview | default $x.Content) }}
 
 {{ $uniqueID := "" }}{{ with $x.File }}{{ $uniqueID = .UniqueID }}{{ end }}
-{{ $id := .id | default $uniqueID }}
+{{ $id := (.id | default $uniqueID) }}
 
 {{ if (eq $view "0") }}
 <article class="node-{{ $x.Type }}">

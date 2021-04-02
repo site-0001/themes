@@ -1,4 +1,4 @@
-{{ $x := .context | default "" }}
+{{ $x := (.context | default "") }}
 {{ with ($x.Page.Resources.Match "storage/*") }}
 
 {{ $size := $x.Site.Data.config.storage.images.size }}

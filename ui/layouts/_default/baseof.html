@@ -1,11 +1,11 @@
 <!doctype html>
 
-{{ $lang := $.Site.Params.LanguageCode | default "en-US" }}
+{{ $lang := ($.Site.Params.LanguageCode | default "en-US") }}
 
 <html class="h-100" dir="ltr" lang="{{ $lang }}" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile# fb: http://ogp.me/ns/fb#">
 <head>{{ partial "head" . }}</head>
 
-{{ $type := .Type | default "" }}
+{{ $type := (.Type | default "") }}
 {{ $home := "" }}{{ $node := "" }}{{ $page := "" }}
 {{ if .IsHome }}{{ $home = "is-home" }}{{ end }}
 {{ if .IsNode }}{{ $node = "is-node" }}{{ end }}
@@ -20,7 +20,7 @@
 {{ range $.Site.Data.theme.scripts }}
 <script src="{{ . }}" crossorigin="anonymous" defer></script>
 {{ end }}
-{{ $themeJS := resources.Get "js/theme.min.js" | fingerprint "sha512" }}
+{{ $themeJS := (resources.Get "js/theme.min.js" | fingerprint "sha512") }}
 <script src="{{ $themeJS.RelPermalink }}" integrity="{{ $themeJS.Data.Integrity }}" defer></script>
 <!-- / scripts -->
 </body>

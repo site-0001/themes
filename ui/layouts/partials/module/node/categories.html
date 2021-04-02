@@ -1,4 +1,4 @@
-{{ $x := .context | default "" }}
+{{ $x := (.context | default "") }}
 
 {{ if $x.Params.categories }}
 <div class="node-categories">

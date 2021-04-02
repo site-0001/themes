@@ -3,7 +3,7 @@
 {{ if (gt $p.TotalPages 1) }}
 <nav class="mt-5">
   <ul class="pagination justify-content-center">
-    {{ if and (ne $p.PageNumber 1) (ne $p.PageNumber 2) }}
+    {{ if (and (ne $p.PageNumber 1) (ne $p.PageNumber 2)) }}
     <li class="page-item">
       <a class="page-link" href="{{ $p.First.URL }}">
         <i class="fas fa-angle-double-left fa-fw"></i>
@@ -51,7 +51,7 @@
     </li>
     {{ end }}
 
-    {{ if and (ne $p.PageNumber $p.TotalPages) ((ne $p.PageNumber (sub $p.TotalPages 1))) }}
+    {{ if (and (ne $p.PageNumber $p.TotalPages) ((ne $p.PageNumber (sub $p.TotalPages 1)))) }}
     <li class="page-item">
       <a class="page-link" href="{{ $p.Last.URL }}">
         <i class="fas fa-angle-double-right fa-fw"></i>

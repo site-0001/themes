@@ -1,11 +1,11 @@
-{{ $x := .context | default "" }}
+{{ $x := (.context | default "") }}
 
 {{ $url := $x.Permalink }}
-{{ $title := $x.Title | htmlEscape }}
-{{ $summary := $x.Summary | htmlEscape }}
+{{ $title := ($x.Title | htmlEscape) }}
+{{ $summary := ($x.Summary | htmlEscape) }}
 
-{{ $tags := $x.Params.tags | default "" }}
-{{ $tags = delimit $tags "," }}
+{{ $tags := ($x.Params.tags | default "") }}
+{{ $tags = (delimit $tags ",") }}
 
 <ul class="list-inline">
   <li class="list-inline-item mb-2">

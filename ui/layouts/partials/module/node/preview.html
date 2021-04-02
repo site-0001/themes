@@ -1,10 +1,10 @@
-{{ $x := .context | default "" }}
-{{ $title := .title | default $x.Title}}
-{{ $content := .preview | default $x.Content }}
-{{ $url := .url | default $x.RelPermalink }}
+{{ $x := (.context | default "") }}
+{{ $title := (.title | default $x.Title) }}
+{{ $content := (.preview | default $x.Content) }}
+{{ $url := (.url | default $x.RelPermalink) }}
 
 {{ $uniqueID := "" }}{{ with $x.File }}{{ $uniqueID = .UniqueID }}{{ end }}
-{{ $id := .id | default $uniqueID }}
+{{ $id := (.id | default $uniqueID) }}
 
 <div id="modal-{{ $id }}" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">

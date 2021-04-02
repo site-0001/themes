@@ -1,5 +1,5 @@
-{{ $x := .context | default "" }}
-{{ $content := .content | default "" }}
+{{ $x := (.context | default "") }}
+{{ $content := (.content | default "") }}
 
 <div class="article-body">
   {{ $content }}

@@ -1,7 +1,7 @@
 {{ define "breadcrumb" }}
 {{ with .Parent }}
 {{ template "breadcrumb" . }}
-{{ $home_icon := "<i class='fas fa-home'></i>" | safeHTML }}
+{{ $home_icon := ("<i class='fas fa-home'></i>" | safeHTML) }}
 <li class="breadcrumb-item">
   <a href="{{ .RelPermalink }}">{{ if .IsHome }}{{ $home_icon }}{{ else }}{{ .Title }}{{ end }}</a>
 </li>

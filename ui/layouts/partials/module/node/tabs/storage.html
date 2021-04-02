@@ -1,4 +1,4 @@
-{{ $x := .context | default "" }}
+{{ $x := (.context | default "") }}
 {{ with ($x.Page.Resources.Match "storage/*") }}
 
 {{ $icon := "file" }}

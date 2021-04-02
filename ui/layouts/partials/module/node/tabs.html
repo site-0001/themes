@@ -1,5 +1,5 @@
-{{ $x := .context | default "" }}
-{{ $content := .content | default $x.Content }}
+{{ $x := (.context | default "") }}
+{{ $content := (.content | default $x.Content) }}
 {{ $images := 0 }}{{ $audio := 0 }}{{ $video := 0 }}{{ $storage := 0 }}
 
 {{ with ($x.Page.Resources.Match "storage/*") }}

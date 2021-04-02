@@ -27,7 +27,7 @@
           </ul>
         </div>
       </header>
-      {{ $contacts := partial "module/author/contacts" (dict "context" .) }}
+      {{ $contacts := (partial "module/author/contacts" (dict "context" .)) }}
       {{ $content := (delimit (slice $contacts .Content) "") }}
       {{ partial "module/node/tabs" (dict "context" . "content" $content) }}
     </article>

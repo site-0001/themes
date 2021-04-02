@@ -1,4 +1,4 @@
-{{ $x := .context | default "" }}
+{{ $x := (.context | default "") }}
 
 {{ if $x.Params.tags }}
 <div class="node-tags">

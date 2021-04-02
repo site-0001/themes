@@ -1,4 +1,4 @@
-{{ $x := .context | default "" }}
+{{ $x := (.context | default "") }}
 
 <ul class="list-inline text-center text-muted small">
   {{ range ($x.GetTerms "authors") }}

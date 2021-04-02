@@ -1,10 +1,10 @@
-{{ $x := .context | default "" }}
+{{ $x := (.context | default "") }}
 
 <div class="node-similar">
   <article>
     <h4>{{ i18n "seeAlso" }}</h4>
     <div class="article-body">
-      {{ $related := ($x.Site.RegularPages.Related $x) | first 5 }}
+      {{ $related := (($x.Site.RegularPages.Related $x) | first 5) }}
       {{ with $related }}
       <ul>
         {{ range . }}

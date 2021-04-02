@@ -1,5 +1,5 @@
-{{ $x := .context | default "" }}
-{{ $summary := .summary | default "" }}
+{{ $x := (.context | default "") }}
+{{ $summary := (.summary | default "") }}
 
 {{ if in $x.RawContent "<!--more-->" }}
 {{ $summary }}
