@@ -1,5 +1,6 @@
 {{ $x := (.context | default "") }}
 {{ $content := (.content | default $x.Content) }}
+{{ $id := (printf "node-tabs-%s" ($x.File.UniqueID | default "")) }}
 {{ $images := 0 }}{{ $audio := 0 }}{{ $video := 0 }}{{ $storage := 0 }}
 
 {{ with ($x.Page.Resources.Match "storage/*") }}
@@ -13,7 +14,7 @@
 
 {{ end }}
 
-<ul class="nav nav-tabs mt-4 mb-3" role="tablist">
+<ul id="{{ $id }}" class="node-tabs nav nav-tabs mt-4 mb-3" role="tablist">
   <li class="nav-item" role="presentation">
     <a title='{{ i18n "article" }}' class="nav-link active" id="node-home-tab" data-bs-toggle="tab" href="#node-home" role="tab" aria-controls="node-home" aria-selected="true">
       <i class="fas fa-home fa-fw"></i>
