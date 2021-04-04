@@ -1,3 +1,15 @@
 {{ $x := (.context | default "") }}
 
+{{ if $x.Site.DisqusShortname }}
 {{ template "_internal/disqus.html" $x }}
+{{ end }}
+
+{{ if $x.Site.Params.comments.utterances.repo }}
+<script src="https://utteranc.es/client.js"
+        repo="{{ $x.Site.Params.comments.utterances.repo }}"
+        issue-term="{{ $x.Site.Params.comments.utterances.issue_term }}"
+        theme="{{ $x.Site.Params.comments.utterances.theme }}"
+        crossorigin="anonymous"
+        async>
+</script>
+{{ end }}

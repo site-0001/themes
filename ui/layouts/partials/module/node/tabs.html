@@ -47,14 +47,12 @@
     </a>
   </li>
   {{ end }}
-  {{ if $x.Site.DisqusShortname }}
+  {{ if (in $x.Type "post") }}
   <li class="nav-item" role="presentation">
     <a title='{{ i18n "comments" }}' class="nav-link" id="node-comments-tab" data-bs-toggle="tab" href="#node-comments" role="tab" aria-controls="node-comments" aria-selected="false">
       <i class="fas fa-comments fa-fw"></i>
     </a>
   </li>
-  {{ end }}
-  {{ if (in $x.Type "post") }}
   <li class="nav-item" role="presentation">
     <a title='{{ i18n "info" }}' class="nav-link" id="node-info-tab" data-bs-toggle="tab" href="#node-info" role="tab" aria-controls="node-info" aria-selected="false">
       <i class="fas fa-info fa-fw"></i>
@@ -98,12 +96,10 @@
     {{ partial "module/node/tabs/storage" (dict "context" $x) }}
   </div>
   {{ end }}
-  {{ if $x.Site.DisqusShortname }}
+  {{ if (in $x.Type "post") }}
   <div class="tab-pane" id="node-comments" role="tabpanel" aria-labelledby="node-comments-tab">
     {{ partial "module/node/tabs/comments" (dict "context" $x) }}
   </div>
-  {{ end }}
-  {{ if (in $x.Type "post") }}
   <div class="tab-pane" id="node-info" role="tabpanel" aria-labelledby="node-info-tab">
     {{ partial "module/node/tabs/info" (dict "context" $x) }}
   </div>
