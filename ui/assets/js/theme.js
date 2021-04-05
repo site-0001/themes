@@ -6,12 +6,12 @@
 
 window.addEventListener('load', function () {
   extGallery();
-  extSelectAll();
   extPopUp();
-  extGoogleForm();
+  extSelectAll();
+  //extGoogleForm();
   extMap();
-  extDiagram();
-  extTabs();
+  //extDiagram();
+  extBSActiveTab();
 });
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -155,10 +155,10 @@ function extDiagram() {
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
-// BS Current tab.
+// BS Active Current Tab.
 // ---------------------------------------------------------------------------------------------------------------------
 
-function extTabs() {
+function extBSActiveTab() {
   const $elID = $('ul.node-tabs').attr('id');
   const $elTab = $('a[data-bs-toggle="tab"]');
   const $storageItem = $elID + '-active-tab';
