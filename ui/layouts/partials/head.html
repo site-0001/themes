@@ -36,8 +36,8 @@
 <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
 {{ end }}
 
-{{ $style := (resources.Get "css/theme.scss" | toCSS | minify | fingerprint) }}
-<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}"/>
+{{ $style := (resources.Get "css/theme.scss" | toCSS | minify) }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}"/>
 <!-- / styles -->
 
 <link rel="icon" type="image/svg+xml" sizes="any" href='{{ "img/favicon.svg" | absURL }}'/>
