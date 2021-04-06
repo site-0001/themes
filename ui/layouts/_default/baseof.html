@@ -20,7 +20,7 @@
 {{ range $.Site.Data.theme.scripts }}
 <script src="{{ . }}" crossorigin="anonymous" defer></script>
 {{ end }}
-{{ $themeJS := (resources.Get "js/theme.min.js" | fingerprint "sha512") }}
+{{ $themeJS := (resources.Get "js/theme.min.js" | fingerprint) }}
 <script src="{{ $themeJS.RelPermalink }}" integrity="{{ $themeJS.Data.Integrity }}" defer></script>
 <!-- / scripts -->
 </body>

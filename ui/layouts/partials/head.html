@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
 {{ end }}
 
-{{ $style := resources.Get "css/theme.scss" | toCSS | minify | fingerprint "sha512" }}
+{{ $style := (resources.Get "css/theme.scss" | toCSS | minify | fingerprint) }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}"/>
 <!-- / styles -->
 
