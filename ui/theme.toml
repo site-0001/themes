@@ -5,7 +5,7 @@ description = "WebSite User Interface"
 homepage = "https://kitsune.solar"
 tags = ["website", "responsive", "multilingual", "mobile"]
 features = ["posts", "shortcodes", "comments"]
-min_version = "0.81.0"
+min_version = "0.82.0"
 
 [author]
   name = "Kitsune Solar"

@@ -5,7 +5,7 @@ Site themes.
 ## Install
 
 ```
-git submodule add https://github.com/{org}/themes.git themes
+git submodule add https://github.com/site-0001/themes.git themes
 ```
 
 ## Update
