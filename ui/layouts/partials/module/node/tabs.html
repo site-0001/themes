@@ -50,13 +50,13 @@
   {{ end }}
   {{ if (in $x.Type "post") }}
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "comments" }}' class="nav-link" id="node-comments-tab" data-bs-toggle="tab" href="#node-comments" role="tab" aria-controls="node-comments" aria-selected="false">
-      <i class="fas fa-comments fa-fw"></i>
+    <a title='{{ i18n "info" }}' class="nav-link" id="node-info-tab" data-bs-toggle="tab" href="#node-info" role="tab" aria-controls="node-info" aria-selected="false">
+      <i class="fas fa-info fa-fw"></i>
     </a>
   </li>
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "info" }}' class="nav-link" id="node-info-tab" data-bs-toggle="tab" href="#node-info" role="tab" aria-controls="node-info" aria-selected="false">
-      <i class="fas fa-info fa-fw"></i>
+    <a title='{{ i18n "comments" }}' class="nav-link" id="node-comments-tab" data-bs-toggle="tab" href="#node-comments" role="tab" aria-controls="node-comments" aria-selected="false">
+      <i class="fas fa-comments fa-fw"></i>
     </a>
   </li>
   {{ end }}
@@ -67,11 +67,22 @@
     </a>
   </li>
   {{ end }}
+  <!-- node-languages -->
+  {{ if $x.IsTranslated }}
+  <li class="nav-item" role="presentation">
+    <a title='{{ i18n "languages" }}' class="nav-link" id="node-lang-tab" data-bs-toggle="tab" href="#node-lang" role="tab" aria-controls="node-lang" aria-selected="false">
+      <i class="fas fa-language fa-fw"></i>
+    </a>
+  </li>
+  {{ end }}
+  <!-- / node-languages -->
+  <!-- node-share -->
   <li class="nav-item ms-auto" role="presentation">
     <a title='{{ i18n "share" }}' class="nav-link" id="node-share-tab" data-bs-toggle="tab" href="#node-share" role="tab" aria-controls="node-share" aria-selected="false">
       <i class="fas fa-share fa-fw"></i>
     </a>
   </li>
+  <!-- / node-share -->
 </ul>
 <div class="tab-content">
   <div class="tab-pane show active" id="node-home" role="tabpanel" aria-labelledby="node-home-tab">
@@ -98,11 +109,11 @@
   </div>
   {{ end }}
   {{ if (in $x.Type "post") }}
-  <div class="tab-pane" id="node-comments" role="tabpanel" aria-labelledby="node-comments-tab">
-    {{ partial "module/node/tabs/comments" (dict "context" $x) }}
-  </div>
   <div class="tab-pane" id="node-info" role="tabpanel" aria-labelledby="node-info-tab">
     {{ partial "module/node/tabs/info" (dict "context" $x) }}
+  </div>
+  <div class="tab-pane" id="node-comments" role="tabpanel" aria-labelledby="node-comments-tab">
+    {{ partial "module/node/tabs/comments" (dict "context" $x) }}
   </div>
   {{ end }}
   {{ if (in $x.Type "authors") }}
@@ -110,6 +121,13 @@
     {{ partial "module/author/articles" (dict "context" $x) }}
   </div>
   {{ end }}
+  <!-- node-languages -->
+  {{ if $x.IsTranslated }}
+  <div class="tab-pane" id="node-lang" role="tabpanel" aria-labelledby="node-lang-tab">
+    {{ partial "module/node/tabs/languages" (dict "context" $x) }}
+  </div>
+  {{ end }}
+  <!-- / node-languages -->
   <!-- node-share -->
   <div class="tab-pane" id="node-share" role="tabpanel" aria-labelledby="node-share-tab">
     {{ partial "module/node/tabs/share" (dict "context" $x) }}

@@ -1,0 +1,20 @@
+{{ $x := (.context | default "") }}
+
+<div class="article-body">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th class="w-25">{{ i18n "languages" }}</th>
+      <th>{{ i18n "articles" }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ range $x.Translations }}
+    <tr>
+      <td>{{ .Language.LanguageName }}</td>
+      <td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+    </tr>
+    {{ end }}
+    </tbody>
+  </table>
+</div>

@@ -68,7 +68,7 @@ other = "Email"
 [contacts]
 other = "Contacts"
 
-[seeAlso]
+[see_also]
 other = "See also"
 
 [previous]
@@ -119,7 +119,7 @@ other = "Phone"
 [message]
 other = "Message"
 
-[noData]
+[no_data]
 other = "Not data..."
 
 [submit]
