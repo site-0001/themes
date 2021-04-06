@@ -20,8 +20,7 @@
 {{ range $.Site.Data.theme.scripts }}
 <script src="{{ . }}" crossorigin="anonymous" defer></script>
 {{ end }}
-{{ $themeJS := (resources.Get "js/theme.min.js") }}
-<script src="{{ $themeJS.RelPermalink }}" defer></script>
+<script type="module" src="/js/theme.min.js"></script>
 <!-- / scripts -->
 </body>
 </html>
