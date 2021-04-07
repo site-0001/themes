@@ -1,13 +1,13 @@
 export function nodeActiveTab() {
   if (!query('ul.node-tabs')) {
-    return 0;
+    return false;
   }
 
   const $elID = attr('ul.node-tabs', 'id');
   const $elTabs = queryAll('button[data-bs-toggle="tab"]');
   const $storageItem = $elID + '-active';
 
-  [].forEach.call($elTabs, (i) => {
+  Array.from($elTabs).forEach(i => {
     i.addEventListener('show.bs.tab', (e) => {
       storeSet($storageItem, i.dataset.bsTarget);
     });

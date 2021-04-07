@@ -1,7 +1,7 @@
 export function init() {
-  const $elGallery = queryAll('.article-body');
+  const $el = queryAll('.article-body');
 
-  [].forEach.call($elGallery, (i) => {
+  Array.from($el).forEach(i => {
     lightGallery(i, {
       selector: '.gallery-item'
     });
