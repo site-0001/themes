@@ -1,5 +1,5 @@
 export function init() {
-  const $elGallery = queryAll('.ext-gallery');
+  const $elGallery = queryAll('.article-body');
 
   [].forEach.call($elGallery, (i) => {
     lightGallery(i, {
