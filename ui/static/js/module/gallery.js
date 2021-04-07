@@ -1,16 +1,13 @@
 export function init() {
-  const $article = $('.article-body');
-  const $gallery = $('.ext-gallery');
+  const $elGallery = queryAll('.ext-gallery');
 
-  $article.lightGallery({
-    selector: '.gallery-item',
-    galleryId: 2,
-    share: 0
+  [].forEach.call($elGallery, (i) => {
+    lightGallery(i, {
+      selector: '.gallery-item'
+    });
   });
+}
 
-  $gallery.lightGallery({
-    selector: '.gallery-item',
-    galleryId: 1,
-    share: 0
-  });
+function queryAll($element) {
+  return document.querySelectorAll($element);
 }

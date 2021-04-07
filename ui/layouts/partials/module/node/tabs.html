@@ -16,71 +16,71 @@
 
 <ul id="{{ $id }}" class="node-tabs nav nav-tabs mt-4 mb-3" role="tablist">
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "article" }}' class="nav-link active" id="node-home-tab" data-bs-toggle="tab" href="#node-home" role="tab" aria-controls="node-home" aria-selected="true">
+    <button title='{{ i18n "article" }}' class="nav-link active" id="node-home-tab" data-bs-toggle="tab" data-bs-target="#node-home" type="button" role="tab" aria-controls="node-home" aria-selected="true">
       <i class="fas fa-home fa-fw"></i>
-    </a>
+    </button>
   </li>
   {{ if $images }}
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "images" }}' class="nav-link" id="node-images-tab" data-bs-toggle="tab" href="#node-images" role="tab" aria-controls="node-images" aria-selected="false">
+    <button title='{{ i18n "images" }}' class="nav-link" id="node-images-tab" data-bs-toggle="tab" data-bs-target="#node-images" type="button" role="tab" aria-controls="node-images" aria-selected="false">
       <i class="fas fa-images fa-fw"></i>
-    </a>
+    </button>
   </li>
   {{ end }}
   {{ if $audio }}
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "audio" }}' class="nav-link" id="node-audio-tab" data-bs-toggle="tab" href="#node-audio" role="tab" aria-controls="node-audio" aria-selected="false">
+    <button title='{{ i18n "audio" }}' class="nav-link" id="node-audio-tab" data-bs-toggle="tab" data-bs-target="#node-audio" type="button" role="tab" aria-controls="node-audio" aria-selected="false">
       <i class="fas fa-volume-up fa-fw"></i>
-    </a>
+    </button>
   </li>
   {{ end }}
   {{ if $video }}
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "video" }}' class="nav-link" id="node-video-tab" data-bs-toggle="tab" href="#node-video" role="tab" aria-controls="node-video" aria-selected="false">
+    <button title='{{ i18n "video" }}' class="nav-link" id="node-video-tab" data-bs-toggle="tab" data-bs-target="#node-video" type="button" role="tab" aria-controls="node-video" aria-selected="false">
       <i class="fas fa-video fa-fw"></i>
-    </a>
+    </button>
   </li>
   {{ end }}
   {{ if $storage }}
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "storage" }}' class="nav-link" id="node-storage-tab" data-bs-toggle="tab" href="#node-storage" role="tab" aria-controls="node-storage" aria-selected="false">
+    <button title='{{ i18n "storage" }}' class="nav-link" id="node-storage-tab" data-bs-toggle="tab" data-bs-target="#node-storage" type="button" role="tab" aria-controls="node-storage" aria-selected="false">
       <i class="fas fa-hdd fa-fw"></i>
-    </a>
+    </button>
   </li>
   {{ end }}
   {{ if (in $x.Type "post") }}
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "info" }}' class="nav-link" id="node-info-tab" data-bs-toggle="tab" href="#node-info" role="tab" aria-controls="node-info" aria-selected="false">
+    <button title='{{ i18n "info" }}' class="nav-link" id="node-info-tab" data-bs-toggle="tab" data-bs-target="#node-info" type="button" role="tab" aria-controls="node-info" aria-selected="false">
       <i class="fas fa-info fa-fw"></i>
-    </a>
+    </button>
   </li>
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "comments" }}' class="nav-link" id="node-comments-tab" data-bs-toggle="tab" href="#node-comments" role="tab" aria-controls="node-comments" aria-selected="false">
+    <button title='{{ i18n "comments" }}' class="nav-link" id="node-comments-tab" data-bs-toggle="tab" data-bs-target="#node-comments" type="button" role="tab" aria-controls="node-comments" aria-selected="false">
       <i class="fas fa-comments fa-fw"></i>
-    </a>
+    </button>
   </li>
   {{ end }}
   {{ if (in $x.Type "authors") }}
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "articles" }}' class="nav-link" id="node-articles-tab" data-bs-toggle="tab" href="#node-articles" role="tab" aria-controls="node-articles" aria-selected="false">
+    <button title='{{ i18n "articles" }}' class="nav-link" id="node-articles-tab" data-bs-toggle="tab" data-bs-target="#node-articles" type="button" role="tab" aria-controls="node-articles" aria-selected="false">
       <i class="fas fa-book fa-fw"></i>
-    </a>
+    </button>
   </li>
   {{ end }}
   <!-- node-languages -->
   {{ if $x.IsTranslated }}
   <li class="nav-item" role="presentation">
-    <a title='{{ i18n "languages" }}' class="nav-link" id="node-lang-tab" data-bs-toggle="tab" href="#node-lang" role="tab" aria-controls="node-lang" aria-selected="false">
+    <button title='{{ i18n "languages" }}' class="nav-link" id="node-lang-tab" data-bs-toggle="tab" data-bs-target="#node-lang" type="button" role="tab" aria-controls="node-lang" aria-selected="false">
       <i class="fas fa-language fa-fw"></i>
-    </a>
+    </button>
   </li>
   {{ end }}
   <!-- / node-languages -->
   <!-- node-share -->
   <li class="nav-item ms-auto" role="presentation">
-    <a title='{{ i18n "share" }}' class="nav-link" id="node-share-tab" data-bs-toggle="tab" href="#node-share" role="tab" aria-controls="node-share" aria-selected="false">
+    <button title='{{ i18n "share" }}' class="nav-link" id="node-share-tab" data-bs-toggle="tab" data-bs-target="#node-share" type="button" role="tab" aria-controls="node-share" aria-selected="false">
       <i class="fas fa-share fa-fw"></i>
-    </a>
+    </button>
   </li>
   <!-- / node-share -->
 </ul>

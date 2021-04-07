@@ -1,8 +1,14 @@
 export function popUp() {
-  const $el = $('.ext-popup');
+  const $el = queryAll('.ext-popup');
 
-  $el.on('click', function () {
-    window.open(this.href, this.title, 'width=640,height=480,toolbar=0,status=0');
-    return false;
+  [].forEach.call($el, (i) => {
+    i.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(i.href, i.title, 'width=640,height=480,toolbar=0,status=0');
+    });
   });
+}
+
+function queryAll($element) {
+  return document.querySelectorAll($element);
 }

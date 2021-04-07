@@ -1,8 +1,14 @@
 export function all() {
-  const $el = $('.ext-select-all');
+  const $el = queryAll('.ext-select-all');
 
-  $el.on('click', function () {
-    $(this).select();
-    document.execCommand('copy');
+  [].forEach.call($el, (i) => {
+    i.addEventListener('click', (e) => {
+      i.select();
+      document.execCommand('copy');
+    });
   });
+}
+
+function queryAll($element) {
+  return document.querySelectorAll($element);
 }
