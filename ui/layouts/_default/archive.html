@@ -2,7 +2,7 @@
 
 {{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
 
-<div class="section py-5">
+<div class="section py-3 py-md-5">
   <div class="container">
     {{ partial "breadcrumb" . }}
 
