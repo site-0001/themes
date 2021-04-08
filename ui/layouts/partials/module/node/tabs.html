@@ -86,34 +86,34 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane show active" id="node-home" role="tabpanel" aria-labelledby="node-home-tab">
-    {{ partial "module/node/tabs/home" (dict "context" $x "content" $content) }}
+    {{ partial "module/node/tab/home" (dict "context" $x "content" $content) }}
   </div>
   {{ if $images }}
   <div class="tab-pane" id="node-images" role="tabpanel" aria-labelledby="node-images-tab">
-    {{ partial "module/node/tabs/images" (dict "context" $x) }}
+    {{ partial "module/node/tab/images" (dict "context" $x) }}
   </div>
   {{ end }}
   {{ if $audio }}
   <div class="tab-pane" id="node-audio" role="tabpanel" aria-labelledby="node-video-tab">
-    {{ partial "module/node/tabs/audio" (dict "context" $x) }}
+    {{ partial "module/node/tab/audio" (dict "context" $x) }}
   </div>
   {{ end }}
   {{ if $video }}
   <div class="tab-pane" id="node-video" role="tabpanel" aria-labelledby="node-video-tab">
-    {{ partial "module/node/tabs/video" (dict "context" $x) }}
+    {{ partial "module/node/tab/video" (dict "context" $x) }}
   </div>
   {{ end }}
   {{ if $storage }}
   <div class="tab-pane" id="node-storage" role="tabpanel" aria-labelledby="node-storage-tab">
-    {{ partial "module/node/tabs/storage" (dict "context" $x) }}
+    {{ partial "module/node/tab/storage" (dict "context" $x) }}
   </div>
   {{ end }}
   {{ if (in $x.Type "post") }}
   <div class="tab-pane" id="node-info" role="tabpanel" aria-labelledby="node-info-tab">
-    {{ partial "module/node/tabs/info" (dict "context" $x) }}
+    {{ partial "module/node/tab/info" (dict "context" $x) }}
   </div>
   <div class="tab-pane" id="node-comments" role="tabpanel" aria-labelledby="node-comments-tab">
-    {{ partial "module/node/tabs/comments" (dict "context" $x) }}
+    {{ partial "module/node/tab/comments" (dict "context" $x) }}
   </div>
   {{ end }}
   {{ if (in $x.Type "authors") }}
@@ -124,13 +124,13 @@
   <!-- node-languages -->
   {{ if $x.IsTranslated }}
   <div class="tab-pane" id="node-lang" role="tabpanel" aria-labelledby="node-lang-tab">
-    {{ partial "module/node/tabs/languages" (dict "context" $x) }}
+    {{ partial "module/node/tab/languages" (dict "context" $x) }}
   </div>
   {{ end }}
   <!-- / node-languages -->
   <!-- node-share -->
   <div class="tab-pane" id="node-share" role="tabpanel" aria-labelledby="node-share-tab">
-    {{ partial "module/node/tabs/share" (dict "context" $x) }}
+    {{ partial "module/node/tab/share" (dict "context" $x) }}
   </div>
   <!-- / node-share -->
 </div>
