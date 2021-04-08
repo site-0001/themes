@@ -8,9 +8,7 @@ export function nodeActiveTab() {
   const $storageItem = $elID + '-active';
 
   Array.from($elTabs).forEach($i => {
-    $i.addEventListener('show.bs.tab', ($e) => {
-      storeSet($storageItem, $i.dataset.bsTarget);
-    });
+    eventActiveTab($i, $storageItem)
   });
 
   const $activeTab = storeGet($storageItem);
@@ -20,6 +18,20 @@ export function nodeActiveTab() {
     const $bsTab = new bootstrap.Tab($tab);
     $bsTab.show()
   }
+}
+
+function eventActiveTab($i, $s) {
+  $i.addEventListener('show.bs.tab', ($e) => {
+    storeSet($s, $i.dataset.bsTarget);
+  });
+}
+
+function storeSet($name, $value) {
+  return localStorage.setItem($name, $value);
+}
+
+function storeGet($item) {
+  return localStorage.getItem($item);
 }
 
 function query($element) {
@@ -32,12 +44,4 @@ function queryAll($element) {
 
 function attr($element, $attr) {
   return document.querySelector($element).getAttribute($attr);
-}
-
-function storeSet($name, $value) {
-  return localStorage.setItem($name, $value);
-}
-
-function storeGet($item) {
-  return localStorage.getItem($item);
 }
