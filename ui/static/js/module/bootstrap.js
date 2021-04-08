@@ -7,9 +7,9 @@ export function nodeActiveTab() {
   const $elTabs = queryAll('button[data-bs-toggle="tab"]');
   const $storageItem = $elID + '-active';
 
-  Array.from($elTabs).forEach(i => {
-    i.addEventListener('show.bs.tab', (e) => {
-      storeSet($storageItem, i.dataset.bsTarget);
+  Array.from($elTabs).forEach($i => {
+    $i.addEventListener('show.bs.tab', ($e) => {
+      storeSet($storageItem, $i.dataset.bsTarget);
     });
   });
 
@@ -17,8 +17,8 @@ export function nodeActiveTab() {
 
   if ($activeTab) {
     const $tab = query('button[data-bs-target="' + $activeTab + '"]');
-    const tab = new bootstrap.Tab($tab);
-    tab.show()
+    const $bsTab = new bootstrap.Tab($tab);
+    $bsTab.show()
   }
 }
 

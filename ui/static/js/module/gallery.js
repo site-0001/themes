@@ -1,11 +1,19 @@
 export function init() {
   const $el = queryAll('.article-body');
 
-  Array.from($el).forEach(i => {
-    lightGallery(i, {
-      selector: '.gallery-item'
-    });
+  Array.from($el).forEach($i => {
+    eventGallery($i)
   });
+}
+
+function eventGallery($i) {
+  let $gallery;
+
+  $gallery = lightGallery($i, {
+    selector: '.gallery-item'
+  });
+
+  return $gallery;
 }
 
 function queryAll($element) {
