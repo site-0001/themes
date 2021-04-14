@@ -10,12 +10,12 @@
     <div class="row mb-3">
       <div class="col">
         <article>
-          <h3>{{ .Key }}</h3>
+          <h2>{{ .Key }}</h2>
           <div class="article-body">
             <ul class="list-unstyled">
               {{ range .Pages }}
               <li class="d-flex">
-                <div class="me-3"><code>{{ .Date.Format "01/02" }}</code></div>
+                <div class="me-3"><code>{{ .Date.UTC.Format "01/02" }}</code></div>
                 <div><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
               </li>
               {{ end }}

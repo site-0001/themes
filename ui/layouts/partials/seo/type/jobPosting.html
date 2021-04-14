@@ -1,4 +1,4 @@
-{{ $datePosted := (.PublishDate.Format "2006-01-02T15:04:05") }}
+{{ $datePosted := (.PublishDate.UTC.Format "2006-01-02T15:04:05") }}
 {{ $employmentType := .Params.employmentType | default "" }}
 
 {{ $description := $.Site.Params.description }}

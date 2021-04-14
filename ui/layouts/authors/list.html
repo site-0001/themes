@@ -20,8 +20,8 @@
             <li class="list-inline-item">&bull;</li>
             {{ end }}
             <li class="list-inline-item">
-              <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                {{ .Date.Format "2006/01/02 15:04 MST" }}
+              <time datetime='{{ .Date.UTC.Format "2006-01-02T15:04:05Z07:00" }}'>
+                {{ .Date.UTC.Format "2006/01/02 15:04 MST" }}
               </time>
             </li>
           </ul>
