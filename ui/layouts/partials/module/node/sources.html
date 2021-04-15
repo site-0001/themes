@@ -1,7 +1,7 @@
 {{ $x := (.context | default "") }}
 
 {{ if $x.Params.sources }}
-<div class="text-muted font-italic border-top mt-5 pt-3">
+<div class="text-muted font-italic border-top mt-5 pt-3 small">
   <p>{{ i18n "sources" }}:</p>
   <ul>
     {{ range $x.Params.sources }}

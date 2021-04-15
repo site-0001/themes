@@ -1,7 +1,8 @@
 {{ $x := (.context | default "") }}
 {{ $summary := (.summary | default "") }}
+{{ $more := "<!--more-->" }}
 
-{{ if in $x.RawContent "<!--more-->" }}
+{{ if (in $x.RawContent $more) }}
 {{ $summary }}
 {{ else }}
 <p>{{ $summary }}</p>
