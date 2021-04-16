@@ -1,3 +1,22 @@
+$elements: 'ul', 'ol', 'table', 'p', 'blockquote';
+$shortcodes:
+    'diagram',
+    'quote',
+    'tags',
+    'categories',
+    'progress',
+    'alert',
+    'spoiler > div',
+    'user',
+    'abbr',
+    'mark',
+    'github-users',
+    'github-users-repos',
+    'github-users-orgs',
+    'github-orgs',
+    'github-repos',
+    'vk-users';
+
 body {
   @for $i from 1 through 6 {
     h#{$i} {
@@ -9,7 +28,17 @@ body {
 body {
   .article {
     &-body {
-      @include font-serif();
+      @each $element in $elements {
+        > #{$element} {
+          @include font-serif();
+        }
+      }
+
+      @each $shortcode in $shortcodes {
+        .shortcode-#{$shortcode} {
+          @include font-serif();
+        }
+      }
 
       blockquote {
         border-left: .5rem solid #f8f9fa;
