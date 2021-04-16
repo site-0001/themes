@@ -20,6 +20,7 @@
 
 <!-- scripts -->
 {{ range $.Site.Data.theme.scripts }}
+<link rel="preload" as="script" href="{{ . }}" crossorigin="anonymous"/>
 <script src="{{ . }}" crossorigin="anonymous" defer></script>
 {{ end }}
 <script type="module" src="/js/theme.min.js"></script>

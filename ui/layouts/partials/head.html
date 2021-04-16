@@ -26,7 +26,11 @@
 <!-- fonts -->
 {{ $fonts := $.Site.Data.theme.fonts }}
 {{ range $fonts }}
-<link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
+<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'"/>
+<noscript>
+  <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
+</noscript>
 {{ end }}
 <!-- / fonts -->
 
