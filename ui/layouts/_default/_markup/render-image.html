@@ -1,4 +1,4 @@
 {{ $title := "" }}
 {{ with .Title}}{{ $title = "title='{{ . }}'" }}{{ end }}
 
-<img src="{{ .Destination | safeURL }}" class="img-fluid" alt="{{ .Text }}" {{ $title | safeHTMLAttr }}/>
+<img src="{{ .Destination | safeURL }}" class="img-fluid" alt="{{ .Text }}" {{ $title | safeHTMLAttr }} loading="lazy"/>
