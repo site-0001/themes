@@ -49,12 +49,13 @@
       <img class="d-block w-100"
            src="{{ $value }}?crop={{ $crop }}&amp;w={{ $width }}&amp;h={{ $height }}&amp;fit={{ $fit }}&amp;auto=format"
            srcset="
-                  {{ $value }}?crop={{ $crop }}&amp;w=640&amp;h=360&amp;fit={{ $fit }}&amp;auto=format 576w,
+                  {{ $value }}?crop={{ $crop }}&amp;w=640&amp;h=360&amp;fit={{ $fit }}&amp;auto=format 640w,
                   {{ $value }}?crop={{ $crop }}&amp;w=768&amp;h=432&amp;fit={{ $fit }}&amp;auto=format 768w,
-                  {{ $value }}?crop={{ $crop }}&amp;w=1024&amp;h=576&amp;fit={{ $fit }}&amp;auto=format 992w,
-                  {{ $value }}?crop={{ $crop }}&amp;w=1280&amp;h=720&amp;fit={{ $fit }}&amp;auto=format 1200w,
-                  {{ $value }}?crop={{ $crop }}&amp;w=1600&amp;h=900&amp;fit={{ $fit }}&amp;auto=format 1400w
+                  {{ $value }}?crop={{ $crop }}&amp;w=1024&amp;h=576&amp;fit={{ $fit }}&amp;auto=format 1024w,
+                  {{ $value }}?crop={{ $crop }}&amp;w=1280&amp;h=720&amp;fit={{ $fit }}&amp;auto=format 1280w,
+                  {{ $value }}?crop={{ $crop }}&amp;w=1600&amp;h=900&amp;fit={{ $fit }}&amp;auto=format 1600w
                   "
+           sizes="(min-width: 576px) 100vw"
            alt="{{ $value }}"/>
       {{ else }}
       <img class="d-block w-100" src="{{ $value }}" alt="{{ $value }}"/>
