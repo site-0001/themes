@@ -23,31 +23,6 @@
 {{ end }}
 <!-- / pre-connect -->
 
-<!-- fonts -->
-{{ $fonts := $.Site.Data.theme.fonts }}
-{{ range $fonts }}
-<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous"/>
-<link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'"/>
-<noscript>
-  <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
-</noscript>
-{{ end }}
-<!-- / fonts -->
-
-<!-- styles -->
-{{ $styles := $.Site.Data.theme.styles }}
-{{ range $styles }}
-<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous"/>
-<link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'"/>
-<noscript>
-  <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
-</noscript>
-{{ end }}
-
-{{ $style := (resources.Get "css/theme.scss" | toCSS | minify) }}
-<link rel="stylesheet" href="{{ $style.RelPermalink }}"/>
-<!-- / styles -->
-
 <!-- icons -->
 <link rel="icon" type="image/svg+xml" sizes="any" href='{{ "img/favicon.svg" | absURL }}'/>
 {{ $favicon := slice "16" "32" "64" "128" "192" "256" "512" }}
