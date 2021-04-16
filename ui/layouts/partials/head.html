@@ -26,8 +26,7 @@
 <!-- fonts -->
 {{ $fonts := $.Site.Data.theme.fonts }}
 {{ range $fonts }}
-<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous"/>
-<link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'"/>
+<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous" onload="this.rel='stylesheet'"/>
 <noscript>
   <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
 </noscript>
@@ -37,8 +36,7 @@
 <!-- styles -->
 {{ $styles := $.Site.Data.theme.styles }}
 {{ range $styles }}
-<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous"/>
-<link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'"/>
+<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous" onload="this.rel='stylesheet'"/>
 <noscript>
   <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
 </noscript>
@@ -50,7 +48,7 @@
 
 <!-- icons -->
 <link rel="icon" type="image/svg+xml" sizes="any" href='{{ "img/favicon.svg" | absURL }}'/>
-{{ $favicon := slice "16" "32" "64" "128" "192" "256" "512" }}
+{{ $favicon := (slice "16" "32" "64" "128" "192" "256" "512") }}
 {{ range $favicon }}
 <link rel="icon" type="image/png" sizes="{{ . }}x{{ . }}" href='{{ (printf "img/favicon-%s.png" .) | absURL }}'/>
 {{ end }}
