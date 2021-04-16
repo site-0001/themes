@@ -26,7 +26,8 @@
 <!-- fonts -->
 {{ $fonts := $.Site.Data.theme.fonts }}
 {{ range $fonts }}
-<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous" onload="this.rel='stylesheet'"/>
+<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'"/>
 <noscript>
   <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
 </noscript>
@@ -36,7 +37,8 @@
 <!-- styles -->
 {{ $styles := $.Site.Data.theme.styles }}
 {{ range $styles }}
-<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous" onload="this.rel='stylesheet'"/>
+<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'"/>
 <noscript>
   <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
 </noscript>
