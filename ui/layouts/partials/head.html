@@ -37,20 +37,26 @@
 <!-- styles -->
 {{ $styles := $.Site.Data.theme.styles }}
 {{ range $styles }}
-<link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
+<link rel="preload" as="style" href="{{ . }}" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'"/>
+<noscript>
+  <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous"/>
+</noscript>
 {{ end }}
 
 {{ $style := (resources.Get "css/theme.scss" | toCSS | minify) }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}"/>
 <!-- / styles -->
 
+<!-- icons -->
 <link rel="icon" type="image/svg+xml" sizes="any" href='{{ "img/favicon.svg" | absURL }}'/>
-<link rel="icon" type="image/png" sizes="16x16" href='{{ "img/favicon-16x16.png" | absURL }}'/>
-<link rel="icon" type="image/png" sizes="32x32" href='{{ "img/favicon-32x32.png" | absURL }}'/>
-<link rel="icon" type="image/png" sizes="64x64" href='{{ "img/favicon-64x64.png" | absURL }}'/>
-<link rel="icon" type="image/png" sizes="128x128" href='{{ "img/favicon-128x128.png" | absURL }}'/>
-<link rel="icon" type="image/png" sizes="192x192" href='{{ "img/favicon-192x192.png" | absURL }}'/>
+{{ $favicon := slice "16" "32" "64" "128" "192" "256" "512" }}
+{{ range $favicon }}
+<link rel="icon" type="image/png" sizes="{{ . }}x{{ . }}" href='{{ (printf "img/favicon-%s.png" .) | absURL }}'/>
+{{ end }}
 <link rel="apple-touch-icon" sizes="180x180" href='{{ "img/apple-touch-icon.png" | absURL }}'/>
+<!-- / icons -->
+
 <meta name="application-name" content="{{ $.Site.Title }}"/>
 
 <!-- canonical -->

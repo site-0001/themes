@@ -4,19 +4,19 @@
   "short_name": "{{ $.Site.Title }}",
   "icons": [
     {
-      "src": "{{ "img/favicon-192x192.png" | absURL }}",
+      "src": "{{ "img/favicon-192.png" | absURL }}",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "{{ "img/favicon-256x256.png" | absURL }}",
+      "src": "{{ "img/favicon-256.png" | absURL }}",
       "type": "image/png",
       "sizes": "256x256",
       "purpose": "any maskable"
     },
     {
-      "src": "{{ "img/favicon-512x512.png" | absURL }}",
+      "src": "{{ "img/favicon-512.png" | absURL }}",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"

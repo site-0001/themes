@@ -4,7 +4,7 @@
 {{ with .Summary }}{{ $description = . }}{{ end }}
 {{ with .Description }}{{ $description = . }}{{ end }}
 
-{{ $date := ((.Date.UTC.Format "Mon, 02 Jan 2006 15:04:05 -0700") | safeHTML) | default "" }}
+{{ $date := (((.Date.UTC.Format "Mon, 02 Jan 2006 15:04:05 -0700") | safeHTML) | default "") }}
 
 {{ $pages := slice }}
 {{ if (or $.IsHome $.IsSection) }}{{ $pages = $x.RegularPages }}{{ else }}{{ $pages = $x.Pages }}{{ end }}
@@ -31,7 +31,7 @@
     {{ end }}
     <image>
       <link>{{ .Permalink }}</link>
-      <url>{{ "img/favicon-128x128.png" | absURL }}</url>
+      <url>{{ "img/favicon-128.png" | absURL }}</url>
       <width>128</width>
       <height>128</height>
       <title>{{ if (eq .Title $.Site.Title) }}{{ $.Site.Title }}{{ else }}{{ with .Title }}{{.}} | {{ end }}{{ $.Site.Title }}{{ end }}</title>
@@ -41,10 +41,10 @@
     <lastBuildDate>{{ $date }}</lastBuildDate>
     {{ end }}
     {{ with .OutputFormats.Get "rss" }}
-    {{ printf "<atom:link href=%q rel='self' type=%q/>" .Permalink .MediaType | safeHTML }}
+    {{ (printf "<atom:link href=%q rel='self' type=%q/>" .Permalink .MediaType) | safeHTML }}
     {{ end }}
     {{ with .OutputFormats.Get "opensearch" }}
-    {{ printf "<atom:link href=%q rel='search' type=%q/>" .Permalink .MediaType | safeHTML }}
+    {{ (printf "<atom:link href=%q rel='search' type=%q/>" .Permalink .MediaType) | safeHTML }}
     {{ end }}
     {{ range $pages }}
     <item>
