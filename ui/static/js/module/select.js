@@ -1,5 +1,9 @@
-export function all() {
-  const $el = queryAll('.ext-select-all');
+export function init() {
+  selectAll('.ext-select-all');
+}
+
+function selectAll($element) {
+  const $el = queryAll($element);
 
   Array.from($el).forEach($i => {
     eventSelectAll($i);

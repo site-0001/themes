@@ -1,15 +1,19 @@
-export function local() {
-  const $el = queryAll('.ext-date-local');
+export function init() {
+  local('.ext-date-local');
+}
+
+function local($element, $type = 0) {
+  const $el = queryAll($element);
   let $utcDate, $localDate;
 
   Array.from($el).forEach($i => {
     $utcDate = attr($i, 'datetime');
-    $localDate = date($utcDate);
+    $localDate = date($utcDate, $type);
     $i.textContent = $localDate;
   });
 }
 
-function date($iso, $type = 0) {
+function date($iso, $type) {
   let $date, $year, $month, $day, $hours, $minutes, $seconds, $out;
 
   $date = new Date($iso);

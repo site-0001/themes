@@ -1,5 +1,9 @@
-export function popUp() {
-  const $el = queryAll('.ext-popup');
+export function init() {
+  popUp('.ext-popup');
+}
+
+function popUp($element) {
+  const $el = queryAll($element);
 
   Array.from($el).forEach($i => {
     eventPopUp($i);

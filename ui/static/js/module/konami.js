@@ -1,10 +1,14 @@
 export function init() {
+  konami('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightbaenter');
+}
+
+function konami($keys) {
   document.addEventListener('DOMContentLoaded', () => {
-    konamify('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightbaenter');
+    generator($keys);
   });
 }
 
-function konamify($keys) {
+function generator($keys) {
   let $buffer = [];
   let $lastKeyTime = Date.now();
   let $modal = new bootstrap.Modal(query('#ext-egg'));

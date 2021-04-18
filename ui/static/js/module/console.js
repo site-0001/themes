@@ -1,12 +1,14 @@
-export function msg() {
-  let $msg, $item;
-
-  $msg = [''];
-
-  $item = $msg[Math.floor(Math.random() * $msg.length)];
-  text($item, 'font-size: 2rem;');
+export function init() {
+  msg(['']);
 }
 
-function text($text, $style = '') {
+function msg($message) {
+  let $item;
+
+  $item = $message[Math.floor(Math.random() * $message.length)];
+  log($item, 'font-size: 2rem;');
+}
+
+function log($text, $style = '') {
   console.log('%c' + $text, $style);
 }

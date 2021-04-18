@@ -5,7 +5,7 @@
 {{ $storage := 0 }}
 {{ with ($x.Page.Resources.Match "storage/*") }}{{ $storage = 1 }}{{ end }}
 
-<ul id="{{ $id }}" class="node-tabs nav nav-tabs mt-4 mb-3" role="tablist">
+<ul id="{{ $id }}" class="ext-node-tabs nav nav-tabs mt-4 mb-3" role="tablist">
   <li class="nav-item" role="presentation">
     <button title='{{ i18n "article" }}' class="nav-link active" id="node-home-tab" data-bs-toggle="tab" data-bs-target="#node-home" type="button" role="tab" aria-controls="node-home" aria-selected="true">
       <i class="fas fa-home fa-fw"></i>
@@ -60,7 +60,7 @@
   </div>
   {{ if $storage }}
   <div class="tab-pane" id="node-storage" role="tabpanel" aria-labelledby="node-storage-tab">
-    {{ partial "module/node/tab/storage" (dict "context" $x) }}
+    {{ partial "module/node/tab/storage/tabs" (dict "context" $x) }}
   </div>
   {{ end }}
   {{ if (in $x.Type "post") }}

@@ -1,26 +1,31 @@
-export function nodeActiveTab() {
-  if (!query('ul.node-tabs')) {
+export function init() {
+  active('ul.ext-node-tabs', 'button[data-bs-toggle="tab"]');
+  active('div.ext-node-storage-tabs', 'button[data-bs-toggle="pill"]');
+}
+
+function active($element, $tabs) {
+  if (!query($element)) {
     return false;
   }
 
-  const $elID = attr('ul.node-tabs', 'id');
-  const $elTabs = queryAll('button[data-bs-toggle="tab"]');
+  const $elID = attr($element, 'id');
+  const $elTabs = queryAll($tabs);
   const $storageItem = $elID + '-active';
 
   Array.from($elTabs).forEach($i => {
-    eventActiveTab($i, $storageItem)
+    eventActive($i, $storageItem)
   });
 
-  const $activeTab = storeGet($storageItem);
+  const $tabActive = storeGet($storageItem);
 
-  if ($activeTab) {
-    const $tab = query('button[data-bs-target="' + $activeTab + '"]');
+  if ($tabActive) {
+    const $tab = query('button[data-bs-target="' + $tabActive + '"]');
     const $bsTab = new bootstrap.Tab($tab);
     $bsTab.show()
   }
 }
 
-function eventActiveTab($i, $s) {
+function eventActive($i, $s) {
   $i.addEventListener('show.bs.tab', ($e) => {
     storeSet($s, $i.dataset.bsTarget);
   });
