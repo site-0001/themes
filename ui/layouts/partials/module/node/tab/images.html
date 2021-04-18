@@ -1,18 +1,17 @@
 {{ $x := (.context | default "") }}
+{{ $size := ($x.Site.Data.config.storage.images.size | default "") }}
+
 {{ with ($x.Page.Resources.Match "storage/*") }}
 
-{{ $size := $x.Site.Data.config.storage.images.size }}
 <div class="article-body ext-gallery">
-  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5">
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
     {{ range . }}
     {{ if (in .MediaType.MainType "image") }}
     {{ $src := . }}{{ $thumb := $src.Fill $size }}
-    <div class="col mb-2">
-      <figure class="figure">
-        <a class="gallery-item" href="{{ $src.RelPermalink }}">
-          <img class="figure-img img-thumbnail" src="{{ $thumb.RelPermalink }}" alt=""/>
-        </a>
-      </figure>
+    <div class="col">
+      <a class="gallery-item" href="{{ $src.RelPermalink }}">
+        <img class="img-thumbnail" src="{{ $thumb.RelPermalink }}" alt=""/>
+      </a>
     </div>
     {{ end }}
     {{ end }}

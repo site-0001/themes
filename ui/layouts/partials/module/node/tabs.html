@@ -1,18 +1,9 @@
 {{ $x := (.context | default "") }}
 {{ $content := (.content | default $x.Content) }}
 {{ $id := (printf "node-tabs-%s" ($x.File.UniqueID | default "")) }}
-{{ $images := 0 }}{{ $audio := 0 }}{{ $video := 0 }}{{ $storage := 0 }}
 
-{{ with ($x.Page.Resources.Match "storage/*") }}
-{{ $storage = 1 }}
-
-{{ range . }}
-{{ if (in .MediaType.MainType "image") }}{{ $images = 1 }}{{ end }}
-{{ if (in .MediaType.MainType "audio") }}{{ $audio = 1 }}{{ end }}
-{{ if (in .MediaType.MainType "video") }}{{ $video = 1 }}{{ end }}
-{{ end }}
-
-{{ end }}
+{{ $storage := 0 }}
+{{ with ($x.Page.Resources.Match "storage/*") }}{{ $storage = 1 }}{{ end }}
 
 <ul id="{{ $id }}" class="node-tabs nav nav-tabs mt-4 mb-3" role="tablist">
   <li class="nav-item" role="presentation">
@@ -20,27 +11,6 @@
       <i class="fas fa-home fa-fw"></i>
     </button>
   </li>
-  {{ if $images }}
-  <li class="nav-item" role="presentation">
-    <button title='{{ i18n "images" }}' class="nav-link" id="node-images-tab" data-bs-toggle="tab" data-bs-target="#node-images" type="button" role="tab" aria-controls="node-images" aria-selected="false">
-      <i class="fas fa-images fa-fw"></i>
-    </button>
-  </li>
-  {{ end }}
-  {{ if $audio }}
-  <li class="nav-item" role="presentation">
-    <button title='{{ i18n "audio" }}' class="nav-link" id="node-audio-tab" data-bs-toggle="tab" data-bs-target="#node-audio" type="button" role="tab" aria-controls="node-audio" aria-selected="false">
-      <i class="fas fa-volume-up fa-fw"></i>
-    </button>
-  </li>
-  {{ end }}
-  {{ if $video }}
-  <li class="nav-item" role="presentation">
-    <button title='{{ i18n "video" }}' class="nav-link" id="node-video-tab" data-bs-toggle="tab" data-bs-target="#node-video" type="button" role="tab" aria-controls="node-video" aria-selected="false">
-      <i class="fas fa-video fa-fw"></i>
-    </button>
-  </li>
-  {{ end }}
   {{ if $storage }}
   <li class="nav-item" role="presentation">
     <button title='{{ i18n "storage" }}' class="nav-link" id="node-storage-tab" data-bs-toggle="tab" data-bs-target="#node-storage" type="button" role="tab" aria-controls="node-storage" aria-selected="false">
@@ -88,21 +58,6 @@
   <div class="tab-pane show active" id="node-home" role="tabpanel" aria-labelledby="node-home-tab">
     {{ partial "module/node/tab/home" (dict "context" $x "content" $content) }}
   </div>
-  {{ if $images }}
-  <div class="tab-pane" id="node-images" role="tabpanel" aria-labelledby="node-images-tab">
-    {{ partial "module/node/tab/images" (dict "context" $x) }}
-  </div>
-  {{ end }}
-  {{ if $audio }}
-  <div class="tab-pane" id="node-audio" role="tabpanel" aria-labelledby="node-video-tab">
-    {{ partial "module/node/tab/audio" (dict "context" $x) }}
-  </div>
-  {{ end }}
-  {{ if $video }}
-  <div class="tab-pane" id="node-video" role="tabpanel" aria-labelledby="node-video-tab">
-    {{ partial "module/node/tab/video" (dict "context" $x) }}
-  </div>
-  {{ end }}
   {{ if $storage }}
   <div class="tab-pane" id="node-storage" role="tabpanel" aria-labelledby="node-storage-tab">
     {{ partial "module/node/tab/storage" (dict "context" $x) }}

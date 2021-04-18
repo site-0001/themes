@@ -1,0 +1,27 @@
+{{ $x := (.context | default "") }}
+{{ with ($x.Page.Resources.Match "storage/*") }}
+
+{{ $icon := "file" }}
+<div class="article-body">
+  <div class="row row-cols-1 row-cols-lg-2 g-3">
+    {{ range . }}
+    {{ if (or (in .MediaType.MainType "text") (in .MediaType.SubType "pdf")) }}
+    {{ if (in .MediaType.MainType "text") }}{{ $icon = "file-alt" }}{{ end }}
+    {{ if (in .MediaType.SubType "pdf") }}{{ $icon = "file-pdf" }}{{ end }}
+    <div class="col">
+      <div class="d-flex">
+        <div class="me-1 text-muted">
+          <i class="fas fa-{{ $icon }} fa-fw fa-3x"></i>
+        </div>
+        <div class="flex-grow-1">
+          <div><a href="{{ .RelPermalink }}">{{ .Name | path.Base }}</a></div>
+          <div class="text-muted small">{{ .MediaType }}</div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}

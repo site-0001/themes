@@ -2,14 +2,14 @@
 {{ with ($x.Page.Resources.Match "storage/*") }}
 
 <div class="article-body">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+  <div class="row row-cols-1 row-cols-lg-2 g-3">
     {{ range . }}
     {{ if (in .MediaType.MainType "video") }}
     <div class="col">
-      <div class="embed-responsive embed-responsive-16by9">
-        <video class="embed-responsive-item" src="{{ .RelPermalink }}" controls preload="auto"></video>
+      <div class="ratio ratio-16x9">
+        <video src="{{ .RelPermalink }}" controls preload="auto"></video>
       </div>
-      <p class="text-muted small">{{ .Name | path.Base }}</p>
+      <div class="text-muted small">{{ .Name | path.Base }}</div>
     </div>
     {{ end }}
     {{ end }}

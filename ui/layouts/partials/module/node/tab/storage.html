@@ -1,34 +1,73 @@
 {{ $x := (.context | default "") }}
-{{ with ($x.Page.Resources.Match "storage/*") }}
+{{ $id := (printf "node-tabs-storage-%s" ($x.File.UniqueID | default "")) }}
 
-{{ $icon := "file" }}
-<div class="article-body">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-    {{ range . }}
-    {{ if (in .MediaType.MainType "application") }}{{ $icon = "cog" }}{{ end }}
-    {{ if (in .MediaType.MainType "image") }}{{ $icon = "file-image" }}{{ end }}
-    {{ if (in .MediaType.MainType "audio") }}{{ $icon = "file-audio" }}{{ end }}
-    {{ if (in .MediaType.MainType "video") }}{{ $icon = "file-video" }}{{ end }}
-    {{ if (in .MediaType.MainType "text") }}{{ $icon = "file-alt" }}{{ end }}
-    {{ if (in .MediaType.SubType "pdf") }}{{ $icon = "file-pdf" }}{{ end }}
-    {{ if (in .MediaType.SubType "gzip") }}{{ $icon = "file-archive" }}{{ end }}
-    <div class="col">
-      <div class="media">
-        <div class="me-1 text-muted">
-          <i class="fas fa-{{ $icon }} fa-fw fa-3x"></i>
-        </div>
-        <div class="media-body">
-          <p class="mb-0 text-break">
-            <a href="{{ .RelPermalink }}">{{ .Name | path.Base }}</a>
-          </p>
-          <p class="text-muted small">
-            {{ .MediaType }}
-          </p>
-        </div>
-      </div>
+{{ $images := 0 }}{{ $audio := 0 }}{{ $video := 0 }}{{ $docs := 0 }}{{ $files := 0 }}
+
+{{ with ($x.Page.Resources.Match "storage/*") }}
+{{ $files = 1 }}
+
+{{ range . }}
+{{ if (in .MediaType.MainType "image") }}{{ $images = 1 }}{{ end }}
+{{ if (in .MediaType.MainType "audio") }}{{ $audio = 1 }}{{ end }}
+{{ if (in .MediaType.MainType "video") }}{{ $video = 1 }}{{ end }}
+{{ if (or (in .MediaType.MainType "text") (in .MediaType.SubType "pdf")) }}{{ $docs = 1 }}{{ end }}
+{{ end }}
+
+{{ end }}
+
+<div class="d-flex align-items-start">
+  <div id="{{ $id }}" class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
+    {{ if $files }}
+    <button title='{{ i18n "files" }}' class="nav-link active" id="node-files-tab" data-bs-toggle="pill" data-bs-target="#node-files" type="button" role="tab" aria-controls="node-files" aria-selected="true">
+      <i class="fas fa-folder-open fa-fw"></i>
+    </button>
+    {{ end }}
+    {{ if $images }}
+    <button title='{{ i18n "images" }}' class="nav-link" id="node-images-tab" data-bs-toggle="pill" data-bs-target="#node-images" type="button" role="tab" aria-controls="node-images" aria-selected="false">
+      <i class="fas fa-images fa-fw"></i>
+    </button>
+    {{ end }}
+    {{ if $audio }}
+    <button title='{{ i18n "audio" }}' class="nav-link" id="node-audio-tab" data-bs-toggle="pill" data-bs-target="#node-audio" type="button" role="tab" aria-controls="node-audio" aria-selected="false">
+      <i class="fas fa-volume-up fa-fw"></i>
+    </button>
+    {{ end }}
+    {{ if $video }}
+    <button title='{{ i18n "video" }}' class="nav-link" id="node-video-tab" data-bs-toggle="pill" data-bs-target="#node-video" type="button" role="tab" aria-controls="node-video" aria-selected="false">
+      <i class="fas fa-video fa-fw"></i>
+    </button>
+    {{ end }}
+    {{ if $docs }}
+    <button title='{{ i18n "docs" }}' class="nav-link" id="node-docs-tab" data-bs-toggle="pill" data-bs-target="#node-docs" type="button" role="tab" aria-controls="node-docs" aria-selected="false">
+      <i class="fas fa-file-alt fa-fw"></i>
+    </button>
+    {{ end }}
+  </div>
+  <div class="tab-content flex-grow-1">
+    {{ if $files }}
+    <div class="tab-pane show active" id="node-files" role="tabpanel" aria-labelledby="node-files-tab">
+      {{ partial "module/node/tab/files" (dict "context" $x) }}
+    </div>
+    {{ end }}
+    {{ if $images }}
+    <div class="tab-pane" id="node-images" role="tabpanel" aria-labelledby="node-images-tab">
+      {{ partial "module/node/tab/images" (dict "context" $x) }}
+    </div>
+    {{ end }}
+    {{ if $audio }}
+    <div class="tab-pane" id="node-audio" role="tabpanel" aria-labelledby="node-video-tab">
+      {{ partial "module/node/tab/audio" (dict "context" $x) }}
+    </div>
+    {{ end }}
+    {{ if $video }}
+    <div class="tab-pane" id="node-video" role="tabpanel" aria-labelledby="node-video-tab">
+      {{ partial "module/node/tab/video" (dict "context" $x) }}
+    </div>
+    {{ end }}
+    {{ if $docs }}
+    <div class="tab-pane" id="node-docs" role="tabpanel" aria-labelledby="node-docs-tab">
+      {{ partial "module/node/tab/docs" (dict "context" $x) }}
     </div>
     {{ end }}
   </div>
 </div>
-
-{{ end }}
