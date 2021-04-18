@@ -9,7 +9,7 @@
     {{ if (in .MediaType.MainType "image") }}
     {{ $src := . }}{{ $thumb := $src.Fill $size }}
     <div class="col">
-      <a class="gallery-item" href="{{ $src.RelPermalink }}">
+      <a class="ext-gallery-item" href="{{ $src.RelPermalink }}">
         <img class="img-thumbnail" src="{{ $thumb.RelPermalink }}" alt=""/>
       </a>
     </div>

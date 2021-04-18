@@ -10,7 +10,7 @@ function eventGallery($i) {
   let $gallery;
 
   $gallery = lightGallery($i, {
-    selector: '.gallery-item'
+    selector: '.ext-gallery-item'
   });
 
   return $gallery;
