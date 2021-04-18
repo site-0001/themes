@@ -4,11 +4,22 @@
   "description": "{{ $.Site.Params.description }}",
   "icons": [
     {
-      "src": "{{ "img/touch-icon-google.png" | absURL }}",
-      "sizes": "512x512"
+      "src": "{{ "img/icon-192.png" | absURL }}",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ "img/icon-256.png" | absURL }}",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ "img/icon-512.png" | absURL }}",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
-  "display": "fullscreen",
   "background_color": "{{ $.Site.Data.theme.color_bg }}",
-  "theme_color": "{{ $.Site.Data.theme.color }}"
+  "theme_color": "{{ $.Site.Data.theme.color }}",
+  "display": "standalone"
 }

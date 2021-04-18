@@ -31,7 +31,7 @@
     {{ end }}
     <image>
       <link>{{ .Permalink }}</link>
-      <url>{{ "img/favicon-128.png" | absURL }}</url>
+      <url>{{ "img/icon-128.png" | absURL }}</url>
       <width>128</width>
       <height>128</height>
       <title>{{ if (eq .Title $.Site.Title) }}{{ $.Site.Title }}{{ else }}{{ with .Title }}{{.}} | {{ end }}{{ $.Site.Title }}{{ end }}</title>
