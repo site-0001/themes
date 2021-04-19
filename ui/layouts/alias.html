@@ -12,8 +12,8 @@
 
   <!-- scripts -->
   {{ $resource := "js/lang.redirect.min.js" }}
-  {{ $jsFile := ((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) }}
-  <script src="{{ $jsFile.RelPermalink }}"></script>
+  {{ $script := ((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) }}
+  <script src="{{ $script.RelPermalink }}"></script>
   <!-- / scripts -->
 </head>
 <body>

@@ -25,8 +25,8 @@
 {{ end }}
 
 {{ $resource := "js/theme.min.js" }}
-{{ $jsFile := ((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) }}
-<script type="module" src="{{ $jsFile.RelPermalink }}"></script>
+{{ $script := (((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) | fingerprint) }}
+<script type="module" src="{{ $script.RelPermalink }}"></script>
 <!-- / scripts -->
 
 {{ partial "module/eggs" (dict "context" . "image" "https://i.imgur.com/CvvIjqE.gif") }}
