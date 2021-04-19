@@ -25,7 +25,7 @@
 {{ end }}
 
 {{ $resource := "js/theme.min.js" }}
-{{ $script := (((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) | fingerprint) }}
+{{ $script := ((((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) | minify) | fingerprint) }}
 <script type="module" src="{{ $script.RelPermalink }}"></script>
 <!-- / scripts -->
 
