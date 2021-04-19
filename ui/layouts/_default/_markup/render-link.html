@@ -1,12 +1,15 @@
-{{ $opt := "" }}
-{{ if (strings.HasPrefix .Destination "http") }}{{ $opt = "target='_blank' rel='noopener nofollow'" }}{{ end }}
+{{ $title := (.Title | default "") }}
+{{ $href := (.Destination | safeURL) }}
+{{ $text := (.Text | safeHTML) }}
 
-{{ $title := "" }}
-{{ with .Title}}{{ $title = "title='{{ . }}'" }}{{ end }}
-
-{{ if (or (strings.HasSuffix .Destination ".ppt") (strings.HasSuffix .Destination ".pptx") (strings.HasSuffix .Destination ".doc") (strings.HasSuffix .Destination ".docx") (strings.HasSuffix .Destination ".xls") (strings.HasSuffix .Destination ".xlsx")) }}
-{{ $viewer := "https://view.officeapps.live.com/op/view.aspx?src=" }}
-<a href="{{ $viewer }}{{ .Destination | safeURL }}" {{ $title | safeHTMLAttr }} {{ $opt | safeHTMLAttr }}>{{ .Text | safeHTML }}</a>
-{{ else }}
-<a href="{{ .Destination | safeURL }}" {{ $title | safeHTMLAttr }} {{ $opt | safeHTMLAttr }}>{{ .Text | safeHTML }}</a>
+{{ $target := "" }}{{ $rel := "" }}
+{{ if (strings.HasPrefix .Destination "http") }}
+{{ $target = "_blank" }}{{ $rel = "noopener nofollow" }}
 {{ end }}
+
+{{ $viewer := "" }}
+{{ if (or (strings.HasSuffix .Destination ".ppt") (strings.HasSuffix .Destination ".pptx") (strings.HasSuffix .Destination ".doc") (strings.HasSuffix .Destination ".docx") (strings.HasSuffix .Destination ".xls") (strings.HasSuffix .Destination ".xlsx")) }}
+{{ $viewer = "https://view.officeapps.live.com/op/view.aspx?src=" }}
+{{ end }}
+
+<a title="{{ $title }}" href="{{ $viewer }}{{ $href }}" target="{{ $target }}" rel="{{ $rel }}">{{ $text }}</a>
