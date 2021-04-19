@@ -23,7 +23,10 @@
 <link rel="preload" as="script" href="{{ . }}" crossorigin="anonymous"/>
 <script src="{{ . }}" crossorigin="anonymous" defer></script>
 {{ end }}
-<script type="module" src="/js/theme.min.js"></script>
+
+{{ $resource := "js/theme.min.js" }}
+{{ $jsFile := ((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) }}
+<script type="module" src="{{ $jsFile.RelPermalink }}"></script>
 <!-- / scripts -->
 
 {{ partial "module/eggs" (dict "context" . "image" "https://i.imgur.com/CvvIjqE.gif") }}

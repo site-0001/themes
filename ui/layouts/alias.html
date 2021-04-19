@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>{{ .Permalink }}</title>
+  <link rel="canonical" href="{{ .Permalink }}"/>
+  <meta name="robots" content="noindex"/>
+
+  <noscript>
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}"/>
+  </noscript>
+
+  <!-- scripts -->
+  {{ $resource := "js/lang.redirect.min.js" }}
+  {{ $jsFile := ((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) }}
+  <script src="{{ $jsFile.RelPermalink }}"></script>
+  <!-- / scripts -->
+</head>
+<body>
+<h2>Redirection</h2>
+<p>Automatic redirection to your <strong>preferred</strong> language.</p>
+<p><em>If not, <a href="{{ .Permalink }}">click here</a>.</em></p>
+<hr/>
+<h2>Перенаправление</h2>
+<p>Автоматическое перенаправление на <strong>приоритетный</strong> для Вас язык.</p>
+<p><em>Если нет, <a href="{{ .Permalink }}">нажмите здесь</a>.</em></p>
+</body>
+</html>
