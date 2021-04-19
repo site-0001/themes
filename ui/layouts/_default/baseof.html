@@ -1,6 +1,6 @@
 <!doctype html>
 
-{{ $lang := ($.Site.Params.LanguageCode | default "en-US") }}
+{{ $lang := ($.Site.LanguageCode | default "en-us") }}
 
 <html class="h-100" dir="ltr" lang="{{ $lang }}" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile# fb: http://ogp.me/ns/fb#">
 <head>{{ partial "head" . }}</head>
@@ -26,7 +26,7 @@
 <script type="module" src="/js/theme.min.js"></script>
 <!-- / scripts -->
 
-{{ partial "eggs" . }}
+{{ partial "module/eggs" (dict "context" . "image" "https://i.imgur.com/CvvIjqE.gif") }}
 
 </body>
 </html>

@@ -1,5 +1,4 @@
 {{ define "main" }}
-
 {{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
 
 {{ with $posts }}
