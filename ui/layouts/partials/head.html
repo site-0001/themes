@@ -42,7 +42,8 @@
 </noscript>
 {{ end }}
 
-{{ $style := (((resources.Get "css/theme.scss" | toCSS) | minify) | fingerprint) }}
+{{ $scss := "css/theme.scss" }}
+{{ $style := (((resources.Get $scss | toCSS) | minify) | fingerprint) }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}"/>
 <!-- / styles -->
 

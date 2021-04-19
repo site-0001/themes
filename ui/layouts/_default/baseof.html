@@ -24,8 +24,8 @@
 <script src="{{ . }}" crossorigin="anonymous" defer></script>
 {{ end }}
 
-{{ $resource := "js/theme.min.js" }}
-{{ $script := ((((resources.Get $resource | js.Build) | resources.ExecuteAsTemplate $resource .) | minify) | fingerprint) }}
+{{ $js := "js/theme.min.js" }}
+{{ $script := ((((resources.Get $js | js.Build) | resources.ExecuteAsTemplate $js .) | minify) | fingerprint) }}
 <script type="module" src="{{ $script.RelPermalink }}"></script>
 <!-- / scripts -->
 
