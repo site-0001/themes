@@ -2,7 +2,7 @@
 {{ $href := (.Destination | safeURL) }}
 {{ $text := (.Text | safeHTML) }}
 
-{{ $target := "" }}{{ $rel := "" }}
+{{ $target := "_self" }}{{ $rel := "" }}
 {{ if (strings.HasPrefix .Destination "http") }}
 {{ $target = "_blank" }}{{ $rel = "noopener nofollow" }}
 {{ end }}
