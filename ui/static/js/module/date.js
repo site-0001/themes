@@ -1,19 +1,20 @@
 export function init() {
   local('.ext-date-local');
+  local('.ext-time-local', 2);
 }
 
-function local($element, $type = 0) {
+function local($element, $view = 0) {
   const $el = queryAll($element);
   let $utcDate, $localDate;
 
   Array.from($el).forEach($i => {
     $utcDate = attr($i, 'datetime');
-    $localDate = date($utcDate, $type);
+    $localDate = date($utcDate, $view);
     $i.textContent = $localDate;
   });
 }
 
-function date($iso, $type) {
+function date($iso, $view) {
   let $date, $year, $month, $day, $hours, $minutes, $seconds, $out;
 
   $date = new Date($iso);
@@ -31,12 +32,18 @@ function date($iso, $type) {
     return $num;
   }
 
-  switch ($type) {
+  switch ($view) {
     case 0:
       $out = $year + '/' + $month + '/' + $day + ' ' + $hours + ':' + $minutes + ':' + $seconds;
       break;
     case 1:
       $out = $year + '/' + $month + '/' + $day;
+      break;
+    case 2:
+      $out = $hours + ':' + $minutes + ':' + $seconds;
+      break;
+    case 3:
+      $out = $hours + ':' + $minutes;
       break;
     default:
       console.log('Unknown type!')
