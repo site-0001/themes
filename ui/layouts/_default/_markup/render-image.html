@@ -1,5 +1,5 @@
 {{ $title := (.Title | default "") }}
+{{ $alt := (.Text | default "") }}
 {{ $src := (.Destination | safeURL) }}
-{{ $alt := (.Text) }}
 
 <img title="{{ $title }}" class="img-fluid" src="{{ $src }}" alt="{{ $alt }}" loading="lazy"/>
