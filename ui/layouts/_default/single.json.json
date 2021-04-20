@@ -11,12 +11,12 @@
     },
     "page": {
       "name": "{{ .Page.Title }}",
-      "images": [{{ range $i, $e := (.Page.Params.images) }}{{ if $i }},{{ end }}"{{$e}}"{{ end }}],
+      "images": [{{ range $i, $e := (.Page.Params.images) }}{{ if $i }},{{ end }}"{{ $e }}"{{ end }}],
       "description": {{ jsonify ((.Page.Description | default .Page.Summary) | plainify | chomp) }},
       "content": {{ jsonify (.Page.Plain | chomp) }},
-      "authors": [{{ range $i, $e := (.GetTerms "authors") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
-      "categories": [{{ range $i, $e := (.GetTerms "categories") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
-      "tags": [{{ range $i, $e := (.GetTerms "tags") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{$e.Permalink}}"}{{ end }}],
+      "authors": [{{ range $i, $e := (.GetTerms "authors") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{ $e.Permalink }}"}{{ end }}],
+      "categories": [{{ range $i, $e := (.GetTerms "categories") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{ $e.Permalink }}"}{{ end }}],
+      "tags": [{{ range $i, $e := (.GetTerms "tags") }}{{ if $i }},{{ end }}{"name": "{{ $e.LinkTitle }}","url": "{{ $e.Permalink }}"}{{ end }}],
       "date": {
         "created": "{{ $dateC }}",
         "published": "{{ $dateP }}",
@@ -25,7 +25,7 @@
       "url": "{{ .Page.Permalink }}",
       "meta": {
         "type": "{{ .Page.Type }}",
-        "licenses": [{{ range $i, $e := (.Page.Params.licenses) }}{{ if $i }},{{ end }}"{{$e}}"{{ end }}],
+        "licenses": [{{ range $i, $e := (.Page.Params.licenses) }}{{ if $i }},{{ end }}{"name": "{{ $e }}","url": "https://choosealicense.com/licenses/{{ $e }}"}{{ end }}],
         "fid": "{{ .File.UniqueID }}",
         "uuid": "{{ .Page.Params.uuid }}",
         "sha": "{{ (.Page.Plain | chomp) | sha1 }}",
