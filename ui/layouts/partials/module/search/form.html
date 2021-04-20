@@ -1,10 +1,13 @@
-{{ $x := .context }}{{ $id := .id }}
-
+{{ $x := (.context | default "") }}
+{{ $id := (.id | default "") }}
 {{ $url := (urls.Parse $x.Site.BaseURL) }}
-{{ $urlYa := "https://yandex.ru" }}
-{{ $iconYa := "yandex" }}
 
-{{ if (eq $x.Language.Lang "en") }}
+{{ $urlYa := "" }}{{ $iconYa := "" }}
+
+{{ if (eq $x.Language.Lang "ru") }}
+{{ $urlYa = "https://yandex.ru" }}
+{{ $iconYa = "yandex" }}
+{{ else }}
 {{ $urlYa = "https://yandex.com" }}
 {{ $iconYa = "yandex-international" }}
 {{ end }}
@@ -17,6 +20,7 @@
   <div class="input-group">
     <span class="input-group-text"><i class="fas fa-search fa-fw"></i></span>
     <input type="search" class="form-control" name="q" placeholder='{{ i18n "search_google" }}' aria-label='{{ i18n "search_google" }}'/>
+    <span class="input-group-text"><i class="fab fa-google fa-fw"></i></span>
   </div>
 </form>
 {{ end }}
@@ -27,8 +31,9 @@
 <form action="{{ $urlYa }}/yandsearch" method="get" class="d-flex" target="_blank">
   <input type="hidden" name="site" value="{{ $url.Host }}"/>
   <div class="input-group">
-    <span class="input-group-text"><i class="fab fa-{{ $iconYa }} fa-fw"></i></span>
+    <span class="input-group-text"><i class="fas fa-search fa-fw"></i></span>
     <input type="search" class="form-control" name="text" placeholder='{{ i18n "search_yandex" }}' aria-label='{{ i18n "search_yandex" }}'/>
+    <span class="input-group-text"><i class="fab fa-{{ $iconYa }} fa-fw"></i></span>
   </div>
 </form>
 {{ end }}
@@ -39,8 +44,9 @@
 <form action="https://bing.com/search" method="get" class="d-flex" target="_blank">
   <input type="hidden" name="q1" value="site:{{ $url.Host }}"/>
   <div class="input-group">
-    <span class="input-group-text"><i class="fab fa-microsoft fa-fw"></i></span>
+    <span class="input-group-text"><i class="fas fa-search fa-fw"></i></span>
     <input type="search" class="form-control" name="q" placeholder='{{ i18n "search_bing" }}' aria-label='{{ i18n "search_bing" }}'/>
+    <span class="input-group-text"><i class="fab fa-microsoft fa-fw"></i></span>
   </div>
 </form>
 {{ end }}

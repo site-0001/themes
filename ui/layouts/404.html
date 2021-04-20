@@ -20,7 +20,15 @@
           <h2>{{ i18n "404.b2.h1" }}</h2>
           <div class="article-body">
             <p>{{ i18n "404.b2.p1" }}</p>
-            {{ partial "module/search/form" (dict "context" . "id" "google") }}
+            <div class="mb-3">
+              {{ partial "module/search/form" (dict "context" . "id" "google") }}
+            </div>
+            <div class="mb-3">
+              {{ partial "module/search/form" (dict "context" . "id" "yandex") }}
+            </div>
+            <div class="mb-3">
+              {{ partial "module/search/form" (dict "context" . "id" "bing") }}
+            </div>
           </div>
         </article>
       </div>
