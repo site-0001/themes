@@ -16,37 +16,37 @@
   </li>
   <li class="list-inline-item mb-2">
     {{ $twitter := (i18n "twitter") }}
-    <a title='{{ $twitter }}' class="btn btn-light btn-social ext-popup" href="https://twitter.com/intent/tweet?url={{ $url }}&amp;text={{ $title }}&amp;hashtags={{ $tags }}" role="button" rel="noopener nofollow">
+    <a title='{{ $twitter }}' class="btn btn-light btn-social" href="https://twitter.com/intent/tweet?url={{ $url }}&amp;text={{ $title }}&amp;hashtags={{ $tags }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-twitter fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $facebook := (i18n "facebook") }}
-    <a title='{{ $facebook }}' class="btn btn-light btn-social ext-popup" href="https://facebook.com/sharer/sharer.php?u={{ $url }}" role="button" rel="noopener nofollow">
+    <a title='{{ $facebook }}' class="btn btn-light btn-social" href="https://facebook.com/sharer/sharer.php?u={{ $url }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-facebook fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $linkedIn := (i18n "linkedIn") }}
-    <a title='{{ $linkedIn }}' class="btn btn-light btn-social ext-popup" href="https://linkedin.com/sharing/share-offsite/?url={{ $url }}" role="button" rel="noopener nofollow">
+    <a title='{{ $linkedIn }}' class="btn btn-light btn-social" href="https://linkedin.com/sharing/share-offsite/?url={{ $url }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-linkedin fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $reddit := (i18n "reddit") }}
-    <a title='{{ $reddit }}' class="btn btn-light btn-social ext-popup" href="https://reddit.com/submit?url={{ $url }}&amp;title={{ $title }}" role="button" rel="noopener nofollow">
+    <a title='{{ $reddit }}' class="btn btn-light btn-social" href="https://reddit.com/submit?url={{ $url }}&amp;title={{ $title }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-reddit fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $vk := (i18n "vk") }}
-    <a title='{{ $vk }}' class="btn btn-light btn-social ext-popup" href="https://vk.com/share.php?url={{ $url }}&amp;title={{ $title }}&amp;description={{ $summary }}" role="button" rel="noopener nofollow">
+    <a title='{{ $vk }}' class="btn btn-light btn-social" href="https://vk.com/share.php?url={{ $url }}&amp;title={{ $title }}&amp;description={{ $summary }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-vk fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $telegram := (i18n "telegram") }}
-    <a title='{{ $telegram }}' class="btn btn-light btn-social ext-popup" href="https://t.me/share/url?url={{ $url }}&amp;text={{ $title }}" role="button" rel="noopener nofollow">
+    <a title='{{ $telegram }}' class="btn btn-light btn-social" href="https://t.me/share/url?url={{ $url }}&amp;text={{ $title }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-telegram fa-fw"></i>
     </a>
   </li>
@@ -54,61 +54,61 @@
 <ul class="list-inline">
   <li class="list-inline-item mb-2">
     {{ $pinterest := (i18n "pinterest") }}
-    <a title='{{ $pinterest }}' class="btn btn-light btn-social ext-popup" href="http://pinterest.com/pin/create/button/?url={{ $url }}" role="button" rel="noopener nofollow">
+    <a title='{{ $pinterest }}' class="btn btn-light btn-social" href="http://pinterest.com/pin/create/button/?url={{ $url }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-pinterest fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $pocket := (i18n "pocket") }}
-    <a title='{{ $pocket }}' class="btn btn-light btn-social ext-popup" href="https://getpocket.com/edit?url={{ $url }}&amp;title={{ $title }}" target="_blank" role="button" rel="noopener nofollow">
+    <a title='{{ $pocket }}' class="btn btn-light btn-social" href="https://getpocket.com/edit?url={{ $url }}&amp;title={{ $title }}" target="_blank" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-get-pocket fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $hackerNews := (i18n "hackerNews") }}
-    <a title='{{ $hackerNews }}' class="btn btn-light btn-social ext-popup" href="https://news.ycombinator.com/submitlink?u={{ $url }}&amp;t={{ $title }}" role="button" rel="noopener nofollow">
+    <a title='{{ $hackerNews }}' class="btn btn-light btn-social" href="https://news.ycombinator.com/submitlink?u={{ $url }}&amp;t={{ $title }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-hacker-news fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $liveJournal := (i18n "liveJournal") }}
-    <a title='{{ $liveJournal }}' class="btn btn-light btn-social ext-popup" href="https://livejournal.com/update.bml?subject={{ $title }}&amp;event={{ $url }}" role="button" rel="noopener nofollow">
+    <a title='{{ $liveJournal }}' class="btn btn-light btn-social" href="https://livejournal.com/update.bml?subject={{ $title }}&amp;event={{ $url }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fas fa-edit fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $ok := (i18n "ok") }}
-    <a title='{{ $ok }}' class="btn btn-light btn-social ext-popup" href="https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&amp;st.shareUrl={{ $url }}&amp;title={{ $title }}" role="button" rel="noopener nofollow">
+    <a title='{{ $ok }}' class="btn btn-light btn-social" href="https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&amp;st.shareUrl={{ $url }}&amp;title={{ $title }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-odnoklassniki fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $blogger := (i18n "blogger") }}
-    <a title='{{ $blogger }}' class="btn btn-light btn-social ext-popup" href="https://blogger.com/blog-this.g?u={{ $url }}&amp;n={{ $title }}&amp;t={{ $summary }}" role="button" rel="noopener nofollow">
+    <a title='{{ $blogger }}' class="btn btn-light btn-social" href="https://blogger.com/blog-this.g?u={{ $url }}&amp;n={{ $title }}&amp;t={{ $summary }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-blogger fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $digg := (i18n "digg") }}
-    <a title='{{ $digg }}' class="btn btn-light btn-social ext-popup" href="https://digg.com/submit?url={{ $url }}" role="button" rel="noopener nofollow">
+    <a title='{{ $digg }}' class="btn btn-light btn-social" href="https://digg.com/submit?url={{ $url }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-digg fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $skype := (i18n "skype") }}
-    <a title='{{ $skype }}' class="btn btn-light btn-social ext-popup" href="https://web.skype.com/share?url={{ $url }}&amp;title={{ $title }}" role="button" rel="noopener nofollow">
+    <a title='{{ $skype }}' class="btn btn-light btn-social" href="https://web.skype.com/share?url={{ $url }}&amp;title={{ $title }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-skype fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $tumblr := (i18n "tumblr") }}
-    <a title='{{ $tumblr }}' class="btn btn-light btn-social ext-popup" href="https://tumblr.com/widgets/share/tool?canonicalUrl={{ $url }}&amp;title={{ $title }}&amp;content={{ $summary }}&amp;tags={{ $tags }}&amp;posttype=link" role="button" rel="noopener nofollow">
+    <a title='{{ $tumblr }}' class="btn btn-light btn-social" href="https://tumblr.com/widgets/share/tool?canonicalUrl={{ $url }}&amp;title={{ $title }}&amp;content={{ $summary }}&amp;tags={{ $tags }}&amp;posttype=link" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-tumblr fa-fw"></i>
     </a>
   </li>
   <li class="list-inline-item mb-2">
     {{ $wordpress := (i18n "wordpress") }}
-    <a title='{{ $wordpress }}' class="btn btn-light btn-social ext-popup" href="https://wordpress.com/wp-admin/press-this.php?u={{ $url }}&amp;t={{ $title }}&amp;s={{ $summary }}" role="button" rel="noopener nofollow">
+    <a title='{{ $wordpress }}' class="btn btn-light btn-social" href="https://wordpress.com/wp-admin/press-this.php?u={{ $url }}&amp;t={{ $title }}&amp;s={{ $summary }}" role="button" rel="noopener nofollow" data-ext-fn="ext-popup">
       <i class="fab fa-wordpress fa-fw"></i>
     </a>
   </li>
@@ -116,11 +116,11 @@
 
 <div class="input-group">
   <span class="input-group-text"><i class="fas fa-link fa-fw"></i></span>
-  <input type="text" class="form-control ext-select-all" value="{{ $url }}" readonly/>
+  <input type="text" class="form-control" value="{{ $url }}" data-ext-fn="ext-select-all" readonly/>
 </div>
 {{ with $x.File }}
 <div class="input-group mt-3">
   <span class="input-group-text"><i class="fas fa-file fa-fw"></i></span>
-  <input type="text" class="form-control ext-select-all" value="{{ .Path }}" readonly/>
+  <input type="text" class="form-control" value="{{ .Path }}" data-ext-fn="ext-select-all" readonly/>
 </div>
 {{ end }}

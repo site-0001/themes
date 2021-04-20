@@ -33,5 +33,5 @@ pre_connect = [
   "https://images.unsplash.com"
 ]
 
-color = "#7289da"
-color_bg = "#7289da"
+color = "#ffffff"
+color_bg = "#ffffff"

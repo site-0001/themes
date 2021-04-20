@@ -1,6 +1,6 @@
 export function init() {
-  local('.ext-date-local');
-  local('.ext-time-local', 2);
+  local('[data-ext-fn="ext-date-local"]');
+  local('[data-ext-fn="ext-time-local"]', 2);
 }
 
 function local($element, $view = 0) {

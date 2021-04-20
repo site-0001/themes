@@ -26,7 +26,7 @@
           <span>{{ i18n "file_id" }}</span>
         </li>
         <li class="col">
-          <input type="text" class="form-control ext-select-all" value="{{ .UniqueID }}" readonly/>
+          <input type="text" class="form-control" value="{{ .UniqueID }}" data-ext-fn="ext-select-all" readonly/>
         </li>
       </ul>
       {{ end }}
@@ -35,7 +35,7 @@
           <span>{{ i18n "uuid" }}</span>
         </li>
         <li class="col">
-          <input type="text" class="form-control ext-select-all" value="{{ $x.Params.uuid }}" readonly/>
+          <input type="text" class="form-control" value="{{ $x.Params.uuid }}" data-ext-fn="ext-select-all" readonly/>
         </li>
       </ul>
       {{ with $x.File }}
@@ -44,7 +44,7 @@
           <span>{{ i18n "sys_path" }}</span>
         </li>
         <li class="col">
-          <input type="text" class="form-control ext-select-all" value="{{ $x.Path }}" readonly/>
+          <input type="text" class="form-control" value="{{ $x.Path }}" data-ext-fn="ext-select-all" readonly/>
         </li>
       </ul>
       {{ end }}
@@ -53,7 +53,7 @@
           <span>{{ i18n "type" }}</span>
         </li>
         <li class="col">
-          <input type="text" class="form-control ext-select-all" value="{{ $x.Type }}" readonly/>
+          <input type="text" class="form-control" value="{{ $x.Type }}" data-ext-fn="ext-select-all" readonly/>
         </li>
       </ul>
       <ul class="row list-unstyled">
@@ -61,7 +61,7 @@
           <span>{{ i18n "word_count" }}</span>
         </li>
         <li class="col">
-          <input type="text" class="form-control ext-select-all" value="{{ $x.WordCount }}" readonly/>
+          <input type="text" class="form-control" value="{{ $x.WordCount }}" data-ext-fn="ext-select-all" readonly/>
         </li>
       </ul>
       <ul class="row list-unstyled">
@@ -69,7 +69,7 @@
           <span>{{ i18n "reading_time" }} ({{ i18n "minutes" }})</span>
         </li>
         <li class="col">
-          <input type="text" class="form-control ext-select-all" value="{{ $x.ReadingTime }}" readonly/>
+          <input type="text" class="form-control" value="{{ $x.ReadingTime }}" data-ext-fn="ext-select-all" readonly/>
         </li>
       </ul>
     </div>

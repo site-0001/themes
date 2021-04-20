@@ -20,7 +20,7 @@
             <li class="list-inline-item">&bull;</li>
             {{ end }}
             <li class="list-inline-item">
-              <time datetime='{{ .Date.UTC.Format "2006-01-02T15:04:05Z07:00" }}' class="ext-date-local">
+              <time datetime='{{ .Date.UTC.Format "2006-01-02T15:04:05Z07:00" }}' data-ext-fn="ext-date-local">
                 {{ .Date.UTC.Format "2006/01/02 15:04 MST" }}
               </time>
             </li>

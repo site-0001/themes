@@ -1,5 +1,5 @@
 export function init() {
-  popUp('.ext-popup');
+  popUp('[data-ext-fn="ext-popup"]');
 }
 
 function popUp($element) {

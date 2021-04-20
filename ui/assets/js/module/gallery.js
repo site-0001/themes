@@ -1,5 +1,5 @@
 export function init() {
-  gallery('.article-body', '.ext-gallery-item');
+  gallery('.article-body', '[data-ext-fn="ext-gallery-item"]');
 }
 
 function gallery($wrapper, $image) {
