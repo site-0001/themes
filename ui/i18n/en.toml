@@ -137,6 +137,27 @@ other = "Docs"
 [egg]
 other = "Oops!"
 
+[404.homepage]
+other = "Home page"
+
+[404.archive]
+other = "Archive"
+
+[404.b1.h1]
+other = "Page Not Found (404)"
+
+[404.b1.p1]
+other = "Wrong address or the page no longer exists."
+
+[404.b1.p2]
+other = "Go to home page, or to archive. "
+
+[404.b2.h1]
+other = "Finding information"
+
+[404.b2.p1]
+other = "Try searching for necessary information using a search engine."
+
 # ----------------------------------------------------------------------------------------------------------------------
 # Social
 # ----------------------------------------------------------------------------------------------------------------------

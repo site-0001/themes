@@ -1,12 +1,13 @@
 {{ define "main" }}
 
 {{ $posts := (where $.Site.RegularPages "Type" "in" $.Site.Params.sections.blog) }}
+{{ $pag_items := $.Site.Params.archive.paginate }}
 
 <div class="section py-3 py-md-5">
   <div class="container">
     {{ partial "breadcrumb" . }}
 
-    {{ range $posts.GroupByDate "2006" }}
+    {{ range (.Paginate ($posts.GroupByDate "2006") $pag_items).PageGroups }}
     <div class="row mb-3">
       <div class="col">
         <article>
@@ -25,6 +26,8 @@
       </div>
     </div>
     {{ end }}
+
+    {{ partial "pagination" . }}
   </div>
 </div>
 
