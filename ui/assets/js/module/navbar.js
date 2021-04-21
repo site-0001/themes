@@ -1,7 +1,11 @@
 import Headroom from './vendor/headroom.min.js';
 
 export function init() {
-  const $header = query('.navbar');
+  toggle('.navbar');
+}
+
+function toggle($element) {
+  const $header = query($element);
   const $headroom = new Headroom($header);
   $headroom.init();
 }
