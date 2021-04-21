@@ -44,7 +44,7 @@
 
 {{ $scss := "css/theme.scss" }}
 {{ $style := (((resources.Get $scss | toCSS) | minify) | fingerprint) }}
-<link rel="stylesheet" href="{{ $style.RelPermalink }}"/>
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}"/>
 <!-- / styles -->
 
 <!-- icons -->

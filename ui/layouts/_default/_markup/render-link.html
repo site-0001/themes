@@ -4,7 +4,7 @@
 
 {{ $target := "_self" }}{{ $rel := "" }}
 {{ if (strings.HasPrefix .Destination "http") }}
-{{ $target = "_blank" }}{{ $rel = "noopener nofollow" }}
+{{ $target = "_blank" }}{{ $rel = "noopener noreferrer nofollow" }}
 {{ end }}
 
 {{ $viewer := "" }}
