@@ -38,7 +38,7 @@ function toggle() {
 
   let $toggleNavbar = function ($direction, $curScroll) {
     if ($direction === 2 && $curScroll > $header.offsetHeight) {
-      $header.setAttribute('style', 'top: -' + $header.offsetHeight + 'px;');
+      $header.setAttribute('style', 'transform: translateY(-' + $header.offsetHeight + 'px);');
       $prevDirection = $direction;
     } else if ($direction === 1) {
       $header.removeAttribute('style');
