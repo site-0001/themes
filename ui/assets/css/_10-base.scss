@@ -26,6 +26,7 @@ body {
   > header {
     .navbar {
       @include font-cond();
+      transition: all .3s ease;
 
       &-brand {
         @include font-brand();
