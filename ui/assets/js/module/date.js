@@ -25,13 +25,6 @@ function date($iso, $view) {
   $minutes = f24($date.getMinutes());
   $seconds = f24($date.getSeconds());
 
-  function f24($num) {
-    if ($num < 10) {
-      $num = '0' + $num;
-    }
-    return $num;
-  }
-
   switch ($view) {
     case 0:
       $out = $year + '/' + $month + '/' + $day + ' ' + $hours + ':' + $minutes + ':' + $seconds;
@@ -50,6 +43,13 @@ function date($iso, $view) {
   }
 
   return $out;
+}
+
+function f24($num) {
+  if ($num < 10) {
+    $num = '0' + $num;
+  }
+  return $num;
 }
 
 function queryAll($element) {
